@@ -44,24 +44,28 @@ def _score(passed: int, total: int) -> float:
     return 100.0 * passed / total
 
 
+def _format_percent(value: float) -> str:
+    rounded = round(value)
+    if abs(value - rounded) < 0.05:
+        return str(rounded)
+    return f"{value:.1f}"
+
+
 def render_svg(decision: Mapping[str, Any]) -> str:
     performance = decision["performance"]
     quality = decision["quality"]
     mini = quality["release_intelligence_mini"]
     humaneval = quality["humanevalplus_full"]
+    baseline_speed = float(
+        performance["baseline"]["decode_tokens_per_second_median"]
+    )
+    candidate_speed = float(
+        performance["recommended"]["decode_tokens_per_second_median"]
+    )
+    speedup = float(performance["recommended"]["decode_speedup"])
     speed_rows = [
-        (
-            "BF16 reference",
-            float(performance["baseline"]["decode_tokens_per_second_median"]),
-            "bf16",
-            "1.000×",
-        ),
-        (
-            "Block FP8",
-            float(performance["recommended"]["decode_tokens_per_second_median"]),
-            "fp8",
-            f"{float(performance['recommended']['decode_speedup']):.3f}×",
-        ),
+        ("BF16", baseline_speed, "bf16"),
+        ("FP8", candidate_speed, "fp8"),
     ]
     quality_rows = [
         (
@@ -83,82 +87,104 @@ def render_svg(decision: Mapping[str, Any]) -> str:
         )
 
     parts = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc" data-chart="vertical-bars">',
         '<title id="title">MiniCPM5-1B RTX 3060 speed and quality benchmark</title>',
-        '<desc id="desc">Block FP8 decodes 1.503 times faster than BF16. HumanEval Plus gains one task, while a frozen 200-task cross-domain suite loses two tasks overall, with the largest drop on IFEval.</desc>',
+        (
+            '<desc id="desc">BF16 and block FP8 compared with vertical bars. '
+            f'FP8 decodes {speedup:.3f} times faster. HumanEval Plus scores '
+            f'{humaneval["reference_passed"]} versus {humaneval["candidate_passed"]} '
+            f'of 164; the frozen cross-domain suite scores {mini["reference_passed"]} '
+            f'versus {mini["candidate_passed"]} of 200. The four 50-task slices '
+            'are release screens, not full official leaderboard reproductions.</desc>'
+        ),
         "<style>",
-        ":root{color-scheme:light dark}",
-        ".bg{fill:#ffffff}.panel{fill:#f8fafc;stroke:#d1d5db}.text{fill:#111827}.muted{fill:#4b5563}.grid{stroke:#d1d5db}.bf16{fill:#6b7280;stroke:#6b7280}.fp8{fill:#2563eb;stroke:#2563eb}.track{fill:#e5e7eb}.link{stroke:#9ca3af}",
-        "text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:400}.title{font-size:32px;font-weight:600}.subtitle{font-size:16px}.panel-title{font-size:20px;font-weight:600}.label{font-size:15px}.value{font-size:14px;font-weight:600}.note{font-size:14px}",
-        "@media(prefers-color-scheme:dark){.bg{fill:#0b0f17}.panel{fill:#111827;stroke:#374151}.text{fill:#f3f4f6}.muted{fill:#cbd5e1}.grid{stroke:#374151}.bf16{fill:#9ca3af;stroke:#9ca3af}.fp8{fill:#60a5fa;stroke:#60a5fa}.track{fill:#273244}.link{stroke:#6b7280}}",
+        ".bg{fill:#fff}.text{fill:#111827}.muted{fill:#667085}.grid{stroke:#e7eaf0;stroke-width:1}.axis{stroke:#cfd4dc;stroke-width:1}.bf16{fill:#c8ced8}.fp8{fill:#2563eb}",
+        "text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.title{font-size:30px;font-weight:650}.subtitle{font-size:15px}.section{font-size:18px;font-weight:650}.unit{font-size:13px}.tick{font-size:12px}.category{font-size:13px;font-weight:500}.value{font-size:13px;font-weight:650}.summary{font-size:17px;font-weight:650}.footnote{font-size:12px}",
         "</style>",
-        '<rect class="bg" width="1200" height="720"/>',
-        '<text class="text title" x="50" y="58">MiniCPM5-1B on RTX 3060: speed vs quality</text>',
-        '<text class="muted subtitle" x="50" y="88">One active request · batch 1 · vLLM 0.27.1 · deterministic no-thinking evaluation</text>',
-        '<rect class="panel" x="50" y="120" width="500" height="430" rx="12"/>',
-        '<rect class="panel" x="590" y="120" width="560" height="430" rx="12"/>',
-        '<text class="text panel-title" x="78" y="162">Single-request decode throughput</text>',
-        '<text class="muted note" x="78" y="187">Higher is faster · output tokens per second</text>',
+        '<rect class="bg" width="1200" height="650"/>',
+        '<text class="text title" x="52" y="50">MiniCPM5-1B · RTX 3060</text>',
+        '<text class="muted subtitle" x="52" y="78">BF16 vs FP8 · one active request · vLLM</text>',
+        '<rect class="bf16" x="970" y="42" width="13" height="13" rx="2"/>',
+        '<text class="muted subtitle" x="991" y="54">BF16</text>',
+        '<rect class="fp8" x="1062" y="42" width="13" height="13" rx="2"/>',
+        '<text class="muted subtitle" x="1083" y="54">FP8</text>',
+        '<text class="text section" x="52" y="132">Decode speed</text>',
+        f'<text class="fp8-label section" x="204" y="132" fill="#2563eb">{speedup:.2f}×</text>',
+        '<text class="muted unit" x="52" y="154">tokens / second</text>',
+        '<text class="text section" x="448" y="132">Benchmark accuracy</text>',
+        '<text class="muted unit" x="448" y="154">correct (%)</text>',
     ]
 
-    bar_start = 205.0
-    bar_width = 300.0
-    max_speed = max(value for _, value, _, _ in speed_rows) * 1.08
-    for index, (label, value, css_class, ratio) in enumerate(speed_rows):
-        y = 280 + index * 120
-        width = value / max_speed * bar_width
-        value_x = min(bar_start + width - 8.0, 448.0)
+    chart_top = 178.0
+    chart_bottom = 520.0
+    chart_height = chart_bottom - chart_top
+
+    speed_left = 82.0
+    speed_right = 390.0
+    speed_max = 300.0
+    for tick in (0, 100, 200, 300):
+        y = chart_bottom - tick / speed_max * chart_height
         parts.extend(
             [
-                f'<text class="text label" x="78" y="{y + 6}">{html.escape(label)}</text>',
-                f'<rect class="track" x="{bar_start:.0f}" y="{y - 17}" width="{bar_width:.0f}" height="30" rx="5"/>',
-                f'<rect class="{css_class}" x="{bar_start:.0f}" y="{y - 17}" width="{width:.1f}" height="30" rx="5"/>',
-                f'<text class="text value" x="{value_x:.1f}" y="{y + 4}" text-anchor="end">{value:.2f}</text>',
-                f'<text class="muted value" x="515" y="{y + 4}" text-anchor="end">{ratio}</text>',
+                f'<line class="grid" x1="{speed_left:.0f}" y1="{y:.1f}" x2="{speed_right:.0f}" y2="{y:.1f}"/>',
+                f'<text class="muted tick" x="{speed_left - 12:.0f}" y="{y + 4:.1f}" text-anchor="end">{tick}</text>',
             ]
         )
-
-    parts.extend(
-        [
-            '<text class="text panel-title" x="620" y="162">Matched benchmark scores</text>',
-            '<text class="muted note" x="620" y="187">Percentage correct · same tasks and deterministic decoding</text>',
-        ]
+    parts.append(
+        f'<line class="axis" x1="{speed_left:.0f}" y1="{chart_bottom:.0f}" x2="{speed_right:.0f}" y2="{chart_bottom:.0f}"/>'
     )
-    axis_start = 760.0
-    axis_width = 335.0
-    for tick in (0, 25, 50, 75, 100):
-        x = axis_start + tick / 100.0 * axis_width
+    speed_centers = (180.0, 300.0)
+    speed_bar_width = 72.0
+    for center, (label, value, css_class) in zip(speed_centers, speed_rows):
+        bar_height = min(value / speed_max, 1.0) * chart_height
+        y = chart_bottom - bar_height
         parts.extend(
             [
-                f'<line class="grid" x1="{x:.1f}" y1="205" x2="{x:.1f}" y2="480"/>',
-                f'<text class="muted note" x="{x:.1f}" y="505" text-anchor="middle">{tick}%</text>',
+                f'<rect class="{css_class}" x="{center - speed_bar_width / 2:.1f}" y="{y:.1f}" width="{speed_bar_width:.0f}" height="{bar_height:.1f}" rx="4"/>',
+                f'<text class="text value" x="{center:.0f}" y="{y - 11:.1f}" text-anchor="middle">{value:.0f}</text>',
+                f'<text class="text category" x="{center:.0f}" y="548" text-anchor="middle">{html.escape(label)}</text>',
             ]
         )
 
-    for index, (label, reference, candidate, total) in enumerate(quality_rows):
-        y = 230 + index * 54
-        ref_score = _score(reference, total)
-        cand_score = _score(candidate, total)
-        ref_x = axis_start + ref_score / 100.0 * axis_width
-        cand_x = axis_start + cand_score / 100.0 * axis_width
-        left_x, right_x = sorted((ref_x, cand_x))
+    quality_left = 478.0
+    quality_right = 1148.0
+    for tick in (0, 25, 50, 75, 100):
+        y = chart_bottom - tick / 100.0 * chart_height
         parts.extend(
             [
-                f'<text class="text label" x="620" y="{y + 5}">{html.escape(label)}</text>',
-                f'<line class="link" x1="{left_x:.1f}" y1="{y}" x2="{right_x:.1f}" y2="{y}" stroke-width="3"/>',
-                f'<circle class="bf16" cx="{ref_x:.1f}" cy="{y}" r="7"/>',
-                f'<circle class="fp8" cx="{cand_x:.1f}" cy="{y}" r="7"/>',
-                f'<text class="text value" x="1122" y="{y + 5}" text-anchor="end">{reference}/{total} → {candidate}/{total}</text>',
+                f'<line class="grid" x1="{quality_left:.0f}" y1="{y:.1f}" x2="{quality_right:.0f}" y2="{y:.1f}"/>',
+                f'<text class="muted tick" x="{quality_left - 12:.0f}" y="{y + 4:.1f}" text-anchor="end">{tick}</text>',
             ]
+        )
+    parts.append(
+        f'<line class="axis" x1="{quality_left:.0f}" y1="{chart_bottom:.0f}" x2="{quality_right:.0f}" y2="{chart_bottom:.0f}"/>'
+    )
+
+    group_width = (quality_right - quality_left) / len(quality_rows)
+    quality_bar_width = 28.0
+    for index, (label, reference, candidate, total) in enumerate(quality_rows):
+        center = quality_left + group_width * (index + 0.5)
+        scores = (
+            (_score(reference, total), "bf16", center - 18.0),
+            (_score(candidate, total), "fp8", center + 18.0),
+        )
+        for score, css_class, bar_center in scores:
+            bar_height = score / 100.0 * chart_height
+            y = chart_bottom - bar_height
+            parts.extend(
+                [
+                    f'<rect class="{css_class}" x="{bar_center - quality_bar_width / 2:.1f}" y="{y:.1f}" width="{quality_bar_width:.0f}" height="{bar_height:.1f}" rx="3"/>',
+                    f'<text class="text value" x="{bar_center:.1f}" y="{y - 8:.1f}" text-anchor="middle">{_format_percent(score)}</text>',
+                ]
+            )
+        parts.append(
+            f'<text class="text category" x="{center:.1f}" y="548" text-anchor="middle">{html.escape(label)}</text>'
         )
 
     parts.extend(
         [
-            '<circle class="bf16" cx="790" cy="532" r="6"/><text class="text note" x="804" y="537">BF16</text>',
-            '<circle class="fp8" cx="875" cy="532" r="6"/><text class="text note" x="889" y="537">Block FP8</text>',
-            '<text class="text value" x="50" y="595">FP8 result: 1.503× BF16 decode · HumanEval+ +1 task · cross-domain suite −2 tasks</text>',
-            f'<text class="muted note" x="50" y="630">Cross-domain churn: {mini["paired_loss_count"]} paired losses, {mini["paired_gain_count"]} gains. Largest drop: IFEval 38/50 → 33/50.</text>',
-            '<text class="muted note" x="50" y="666">Scope: pinned MiniCPM5-1B checkpoint and one RTX 3060. The four 50-task slices are release screens, not full official leaderboard reproductions.</text>',
+            f'<text class="text summary" x="52" y="598">FP8: {speedup:.2f}× decode · {mini["candidate_passed"]}/200 vs {mini["reference_passed"]}/200 across four domain slices</text>',
+            '<text class="muted footnote" x="52" y="625">Deterministic evaluation · HumanEval+ uses 164 tasks · other benchmarks use frozen 50-task slices</text>',
             "</svg>",
         ]
     )

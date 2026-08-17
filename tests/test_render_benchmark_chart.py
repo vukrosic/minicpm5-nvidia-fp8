@@ -13,10 +13,12 @@ class BenchmarkChartTests(unittest.TestCase):
         decision = load_decision(ROOT / "results/release-summary.json")
         svg = render_svg(decision)
         ET.fromstring(svg)
-        self.assertIn("248.52", svg)
-        self.assertIn("1.503×", svg)
-        self.assertIn("95/164 → 96/164", svg)
-        self.assertIn("38/50 → 33/50", svg)
+        self.assertIn('data-chart="vertical-bars"', svg)
+        self.assertIn("249", svg)
+        self.assertIn("1.50×", svg)
+        self.assertIn("58.5", svg)
+        self.assertIn("66", svg)
+        self.assertIn("87/200 vs 89/200", svg)
         self.assertIn("not full official leaderboard reproductions", svg)
 
 
