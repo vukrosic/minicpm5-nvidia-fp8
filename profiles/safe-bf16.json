@@ -1,8 +1,8 @@
 {
   "schema": "minicpm5-serving-profile-v1",
   "name": "safe-bf16",
-  "title": "Unquantized BF16 reference profile",
-  "release_class": "unquantized_reference",
+  "title": "Benchmark-only BF16 reference profile",
+  "release_class": "benchmark_reference",
   "model_environment_variable": "MINICPM5_MODEL_PATH",
   "requires_local_model": true,
   "measured_hardware": "NVIDIA GeForce RTX 3060 12 GB",
@@ -16,5 +16,5 @@
     "--no-enable-prefix-caching",
     "--served-model-name", "openbmb/MiniCPM5-1B-bf16-rtx3060"
   ],
-  "disclosure": "Unquantized serving reference and fallback. This is faster than the token-exact Transformers C048 track but is not itself claimed token-identical to that backend."
+  "disclosure": "Benchmark-only unquantized reference retained to reproduce the published comparison. It is not the default end-user release profile."
 }

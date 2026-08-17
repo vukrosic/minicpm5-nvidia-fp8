@@ -1,41 +1,59 @@
-# MiniCPM5-1B on RTX 3060
+# MiniCPM5-1B FP8 for RTX 3060
 
-A reproducible vLLM profile for fast **single-request** inference with
-[`openbmb/MiniCPM5-1B`](https://huggingface.co/openbmb/MiniCPM5-1B) on one
-NVIDIA RTX 3060 12 GB.
+The optimized default for running
+[`openbmb/MiniCPM5-1B`](https://huggingface.co/openbmb/MiniCPM5-1B) as one
+active request on an NVIDIA RTX 3060 12 GB.
+
+**248.52 decode tok/s — 1.503× the matched BF16 vLLM reference.**
 
 ![MiniCPM5-1B RTX 3060 speed and quality benchmark](docs/assets/benchmark-summary.svg)
 
-## Result
+## Benchmarks
 
-| Profile | Median decode | Relative speed | HumanEval+ | Frozen cross-domain suite |
-| --- | ---: | ---: | ---: | ---: |
-| BF16 reference | 165.39 tok/s | 1.000× | 95/164 | 89/200 |
-| **Online block FP8** | **248.52 tok/s** | **1.503×** | **96/164** | **87/200** |
+### Speed
 
-The recommendation is deliberately a **speed-quality tradeoff**, not a
-no-degradation claim. HumanEval+ contained eight BF16→FP8 losses and nine
-gains. The 200-task GSM8K/MMLU/C-Eval/IFEval screen contained 12 losses and 10
-gains; its largest domain drop was IFEval, from 38/50 to 33/50.
+| Metric | BF16 reference | **FP8 default** | Change |
+| --- | ---: | ---: | ---: |
+| Median decode throughput | 165.39 tok/s | **248.52 tok/s** | **+50.3%** |
+| Median end-to-end throughput | 152.42 tok/s | **221.42 tok/s** | **+45.3%** |
+| Median TTFT | 38.60 ms | **35.11 ms** | **−9.0%** |
 
-## What is released
+Speed used six prompts, one warmup and five timed repetitions per prompt. Batch
+size and concurrency were one.
 
-- `recommended`: online block FP8, Marlin linear kernels, Triton attention;
-- `safe-bf16`: the unquantized serving reference and fallback;
-- an RTX-3060-aware launcher that refuses to download model weights;
-- the frozen evaluation specifications and document-hash manifest;
-- task-level paired comparison receipts;
-- the chart renderer and CPU-safe tests.
+### Quality
 
-The model weights are unchanged and are **not** redistributed here. This is why
-the primary artifact is a GitHub runtime/evidence repository rather than a new
-Hugging Face model repository.
+| Benchmark | BF16 reference | **FP8 default** | Delta |
+| --- | ---: | ---: | ---: |
+| HumanEval+ | 95/164 | **96/164** | +1 |
+| GSM8K slice | 19/50 | **18/50** | −1 |
+| MMLU slice | 16/50 | **18/50** | +2 |
+| C-Eval slice | 16/50 | **18/50** | +2 |
+| IFEval slice | 38/50 | **33/50** | −5 |
+| Four-slice total | 89/200 | **87/200** | −2 |
 
-## Quick start
+The quality runs were deterministic. FP8 changes outputs: HumanEval+ contained
+eight losses and nine gains relative to BF16; the four-slice suite contained
+12 losses and 10 gains. The task-level receipts are published under
+[`results/`](results/).
 
-The measured environment used Linux, one RTX 3060 12 GB, vLLM `0.27.1`,
-PyTorch `2.13.0+cu130`, and model revision
-`4e9de7a0778dc1c362e983e6858f0e77542cbdca`.
+## What was optimized
+
+The default profile combines:
+
+1. vLLM compiled execution and CUDA graph replay;
+2. online per-block FP8 quantization with Marlin linear kernels;
+3. Triton attention, the strongest measured decode backend on this GPU;
+4. a batch-one scheduler with one maximum active sequence;
+5. prefix caching disabled for the single-request target.
+
+The **combined profile** produced the measured speedup. The repository does not
+claim a separate percentage for each component.
+
+## Run it
+
+The measured environment used Linux, vLLM `0.27.1`, PyTorch `2.13.0+cu130`, and
+model revision `4e9de7a0778dc1c362e983e6858f0e77542cbdca`.
 
 Download the official checkpoint directly on the GPU machine:
 
@@ -45,7 +63,7 @@ hf download openbmb/MiniCPM5-1B \
   --local-dir /workspace/models/MiniCPM5-1B
 ```
 
-Install the measured runtime, then launch the recommended profile:
+Install and launch. FP8 is selected automatically—no profile flag is needed:
 
 ```bash
 python3 -m venv .venv
@@ -53,65 +71,57 @@ source .venv/bin/activate
 pip install -r requirements-gpu.txt
 
 export MINICPM5_MODEL_PATH=/workspace/models/MiniCPM5-1B
-./serve --profile recommended --host 127.0.0.1 --port 8000
+./serve --host 127.0.0.1 --port 8000
 ```
 
-Use the BF16 fallback by changing only the profile:
+Inspect the exact vLLM command without starting the server:
 
 ```bash
-./serve --profile safe-bf16 --host 127.0.0.1 --port 8000
+./serve --model "$MINICPM5_MODEL_PATH" --dry-run
 ```
 
-Inspect the complete command without starting vLLM:
+The launcher verifies one RTX 3060 12 GB and never downloads weights. Other
+GPUs require `--allow-unsupported-gpu` and separate measurement.
 
-```bash
-./serve --profile recommended --model "$MINICPM5_MODEL_PATH" --dry-run
-```
+## What this release contains
 
-The launcher verifies that one RTX 3060 12 GB is present. Other GPUs require
-`--allow-unsupported-gpu` and must be benchmarked separately.
+- the default RTX 3060 FP8 serving profile and one-command launcher;
+- the frozen benchmark specifications and document-hash manifest;
+- full task-level paired comparison receipts;
+- a reproducible chart generator and CPU-safe test suite.
 
-## Benchmarks and evidence
+The official OpenBMB weights are unchanged and are not redistributed. The BF16
+configuration in this repository exists only to reproduce the benchmark
+reference; it is not a second end-user release profile.
 
-Read [the benchmark protocol](docs/BENCHMARKS.md) before interpreting the
-numbers. Machine-readable artifacts are under [`results/`](results/):
+## Reproduce the evidence
 
-- [`release-summary.json`](results/release-summary.json): release decision;
-- [`humanevalplus-comparison.json`](results/humanevalplus-comparison.json):
-  complete 164-task paired comparison;
-- [`release-intelligence-comparison.json`](results/release-intelligence-comparison.json):
-  complete 200-task paired outcomes;
-- [`release-intelligence-manifest.json`](results/release-intelligence-manifest.json):
-  frozen dataset revisions and document hashes.
+Read [the full benchmark protocol](docs/BENCHMARKS.md), then inspect:
 
-Regenerate the checked-in chart from the decision JSON:
+- [`release-summary.json`](results/release-summary.json);
+- [`humanevalplus-comparison.json`](results/humanevalplus-comparison.json);
+- [`release-intelligence-comparison.json`](results/release-intelligence-comparison.json);
+- [`release-intelligence-manifest.json`](results/release-intelligence-manifest.json).
+
+Regenerate the chart and run the local validation suite:
 
 ```bash
 python3 scripts/render_benchmark_chart.py \
   --decision results/release-summary.json \
   --output docs/assets/benchmark-summary.svg
-```
 
-Run the CPU-safe validation suite:
-
-```bash
 python3 -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
-The GPU evaluation workflow is documented in
-[`docs/BENCHMARKS.md`](docs/BENCHMARKS.md).
+## Scope
 
-## Claim boundary
-
-These measurements apply directly only to the pinned checkpoint, software,
-single-request workload, and tested RTX 3060. The 50-task domain slices are
-release screens, not official full-leaderboard reproductions. Deterministic
-decoding removes sampling variance, but finite task selection still leaves
-uncertainty about general model quality.
+The measured speed applies directly to the pinned checkpoint, software,
+single-request workload and tested RTX 3060. The four 50-task domain slices
+are release screens, not full official leaderboard reproductions.
 
 ## Attribution and licenses
 
 This project is independent research and is not an official OpenBMB release.
-The code in this repository is MIT licensed. MiniCPM5-1B is published by
-OpenBMB under Apache-2.0; obtain the model and its terms from the
+Repository code is MIT licensed. MiniCPM5-1B is published by OpenBMB under
+Apache-2.0; obtain the model and its terms from the
 [official model page](https://huggingface.co/openbmb/MiniCPM5-1B).

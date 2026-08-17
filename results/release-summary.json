@@ -5,9 +5,9 @@
     "profile": "recommended",
     "family": "online-block-fp8",
     "status": "selected",
-    "basis": "user_accepted_measured_speed_quality_tradeoff",
-    "release_class": "speed_quality_tradeoff",
-    "disclosure": "Selected for measured single-request speed as an explicit quality tradeoff. HumanEval+ scored 96/164 versus BF16's 95/164 with eight paired losses and nine gains; the frozen 200-task cross-domain suite scored 87/200 versus 89/200 with 12 losses and 10 gains."
+    "basis": "user_selected_measured_optimized_default",
+    "release_class": "optimized_default",
+    "disclosure": "Selected as the default RTX 3060 single-request release based on its measured 1.503x decode speedup. HumanEval+ scored 96/164 versus BF16's 95/164 with eight paired losses and nine gains; the frozen 200-task cross-domain suite scored 87/200 versus 89/200 with 12 losses and 10 gains."
   },
   "target": {
     "model": "openbmb/MiniCPM5-1B",
@@ -184,5 +184,5 @@
     "release_intelligence_comparison": "results/release-intelligence-comparison.json",
     "release_intelligence_manifest": "results/release-intelligence-manifest.json"
   },
-  "claim_boundary": "Selected speed-quality tradeoff on one RTX 3060 and the pinned model. FP8 improved aggregate HumanEval+ by one task while producing eight paired losses and nine gains. On the frozen 200-task GSM8K, MMLU, C-Eval, and IFEval mini-suite, FP8 scored 87 versus BF16's 89 with 12 paired losses and 10 gains. It is not a no-degradation or unchanged-intelligence claim; the finite subset leaves benchmark-selection uncertainty."
+  "claim_boundary": "Default optimized profile for one RTX 3060 and the pinned model, measured at 1.503x the BF16 vLLM decode throughput. FP8 improved aggregate HumanEval+ by one task while producing eight paired losses and nine gains. On the frozen 200-task GSM8K, MMLU, C-Eval, and IFEval mini-suite, FP8 scored 87 versus BF16's 89 with 12 paired losses and 10 gains. It is not a no-degradation or unchanged-intelligence claim; the finite subset leaves benchmark-selection uncertainty."
 }

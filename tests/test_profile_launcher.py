@@ -10,7 +10,9 @@ from src.profile_launcher import _build_parser, build_command, load_profile, res
 
 class ProfileLauncherTests(unittest.TestCase):
     def test_default_port_avoids_vast_jupyter_port(self):
-        self.assertEqual(_build_parser().parse_args([]).port, 8000)
+        arguments = _build_parser().parse_args([])
+        self.assertEqual(arguments.port, 8000)
+        self.assertEqual(arguments.profile, "recommended")
 
     def test_recommended_profile_builds_single_request_fp8_command(self):
         profile = load_profile("recommended")
@@ -23,6 +25,7 @@ class ProfileLauncherTests(unittest.TestCase):
         )
         self.assertEqual(command[:3], ["vllm", "serve", "/workspace/model"])
         self.assertIn("fp8_per_block", command)
+        self.assertEqual(profile["release_class"], "optimized_default")
         self.assertEqual(command[command.index("--max-num-seqs") + 1], "1")
         self.assertIn("--no-enable-prefix-caching", command)
 

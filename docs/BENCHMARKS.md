@@ -5,9 +5,8 @@
 > What is the fastest tested MiniCPM5-1B profile for one active request on one
 > RTX 3060 12 GB, and what quality changes were observed against BF16?
 
-The selected answer is online block FP8 at 248.52 decode tok/s, 1.503× BF16.
-It is released as a speed-quality tradeoff because matched evaluations found
-both losses and gains.
+The selected default is online block FP8 at 248.52 decode tok/s, 1.503× BF16.
+Matched evaluations found both losses and gains, which are published in full.
 
 ## Frozen environment
 
@@ -124,5 +123,5 @@ against the frozen manifest before accepting a result.
 
 The fixed-suite observation is an aggregate two-task regression, concentrated
 most visibly in IFEval. General quality remains uncertain because these are
-finite slices. The release claim is therefore limited to a measured 1.503×
-single-request decode speedup with disclosed benchmark churn.
+finite slices. The default release claim is therefore limited to a measured
+1.503× single-request decode speedup with disclosed benchmark churn.

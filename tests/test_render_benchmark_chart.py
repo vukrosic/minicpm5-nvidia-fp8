@@ -16,6 +16,7 @@ class BenchmarkChartTests(unittest.TestCase):
         self.assertIn('data-chart="vertical-bars"', svg)
         self.assertIn("249", svg)
         self.assertIn("1.50×", svg)
+        self.assertIn("FP8 default", svg)
         self.assertIn("58.5", svg)
         self.assertIn("66", svg)
         self.assertIn("87/200 vs 89/200", svg)

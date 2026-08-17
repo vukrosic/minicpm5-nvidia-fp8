@@ -103,7 +103,7 @@ def render_svg(decision: Mapping[str, Any]) -> str:
         "</style>",
         '<rect class="bg" width="1200" height="650"/>',
         '<text class="text title" x="52" y="50">MiniCPM5-1B · RTX 3060</text>',
-        '<text class="muted subtitle" x="52" y="78">BF16 vs FP8 · one active request · vLLM</text>',
+        '<text class="muted subtitle" x="52" y="78">FP8 default vs BF16 reference · one active request · vLLM</text>',
         '<rect class="bf16" x="970" y="42" width="13" height="13" rx="2"/>',
         '<text class="muted subtitle" x="991" y="54">BF16</text>',
         '<rect class="fp8" x="1062" y="42" width="13" height="13" rx="2"/>',
@@ -183,7 +183,7 @@ def render_svg(decision: Mapping[str, Any]) -> str:
 
     parts.extend(
         [
-            f'<text class="text summary" x="52" y="598">FP8: {speedup:.2f}× decode · {mini["candidate_passed"]}/200 vs {mini["reference_passed"]}/200 across four domain slices</text>',
+            f'<text class="text summary" x="52" y="598">FP8 default: {speedup:.2f}× decode · {mini["candidate_passed"]}/200 vs {mini["reference_passed"]}/200 across four domain slices</text>',
             '<text class="muted footnote" x="52" y="625">Deterministic evaluation · HumanEval+ uses 164 tasks · other benchmarks use frozen 50-task slices</text>',
             "</svg>",
         ]
