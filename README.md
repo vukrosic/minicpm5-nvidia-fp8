@@ -7,7 +7,7 @@ active request on an NVIDIA Ampere-or-newer GPU with sufficient VRAM.
 **RTX 3060 benchmark: 248.52 decode tok/s — 1.503× the matched BF16 vLLM
 reference.**
 
-![MiniCPM5-1B RTX 3060 speed and quality benchmark](docs/assets/benchmark-summary.svg)
+![MiniCPM5-1B RTX 3060 speed and quality benchmark](docs/assets/benchmark-summary.png)
 
 ## Benchmarks
 
