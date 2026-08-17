@@ -1,1 +1,1 @@
-"""MiniCPM5 RTX 3060 release utilities."""
+"""MiniCPM5 NVIDIA FP8 release utilities."""

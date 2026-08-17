@@ -1,10 +1,11 @@
 {
   "schema": "minicpm5-serving-profile-v1",
   "name": "recommended",
-  "title": "Default optimized block-FP8 profile",
+  "title": "Default NVIDIA block-FP8 profile",
   "release_class": "optimized_default",
   "model_environment_variable": "MINICPM5_MODEL_PATH",
   "requires_local_model": true,
+  "supported_hardware": "Architecture-compatible with NVIDIA CUDA GPUs at compute capability >= 8.0 (Ampere or newer); sufficient VRAM required",
   "measured_hardware": "NVIDIA GeForce RTX 3060 12 GB",
   "vllm_arguments": [
     "--dtype", "bfloat16",
@@ -15,7 +16,7 @@
     "--attention-backend", "triton_attn",
     "--performance-mode", "balanced",
     "--no-enable-prefix-caching",
-    "--served-model-name", "openbmb/MiniCPM5-1B-fp8-rtx3060"
+    "--served-model-name", "openbmb/MiniCPM5-1B-fp8"
   ],
-  "disclosure": "Default RTX 3060 single-request release. It measured 248.52 decode tok/s, 1.503x the matched BF16 vLLM reference. HumanEval+ scored 96/164 versus 95/164; the frozen 200-task cross-domain suite scored 87/200 versus 89/200. FP8 changes outputs, and all paired losses and gains are published."
+  "disclosure": "Default NVIDIA SM80+ single-request release, benchmarked on an RTX 3060 12 GB. That GPU measured 248.52 decode tok/s, 1.503x its matched BF16 vLLM reference. HumanEval+ scored 96/164 versus 95/164; the frozen 200-task cross-domain suite scored 87/200 versus 89/200. Other GPUs are compatible but unbenchmarked, and FP8 changes outputs."
 }

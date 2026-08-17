@@ -1,10 +1,11 @@
-# MiniCPM5-1B FP8 for RTX 3060
+# MiniCPM5-1B FP8 for NVIDIA GPUs
 
-The optimized default for running
+An optimized default for running
 [`openbmb/MiniCPM5-1B`](https://huggingface.co/openbmb/MiniCPM5-1B) as one
-active request on an NVIDIA RTX 3060 12 GB.
+active request on an NVIDIA Ampere-or-newer GPU with sufficient VRAM.
 
-**248.52 decode tok/s — 1.503× the matched BF16 vLLM reference.**
+**RTX 3060 benchmark: 248.52 decode tok/s — 1.503× the matched BF16 vLLM
+reference.**
 
 ![MiniCPM5-1B RTX 3060 speed and quality benchmark](docs/assets/benchmark-summary.svg)
 
@@ -43,7 +44,7 @@ The default profile combines:
 
 1. vLLM compiled execution and CUDA graph replay;
 2. online per-block FP8 quantization with Marlin linear kernels;
-3. Triton attention, the strongest measured decode backend on this GPU;
+3. Triton attention, the strongest measured decode backend on the RTX 3060;
 4. a batch-one scheduler with one maximum active sequence;
 5. prefix caching disabled for the single-request target.
 
@@ -52,8 +53,9 @@ claim a separate percentage for each component.
 
 ## Run it
 
-The measured environment used Linux, vLLM `0.27.1`, PyTorch `2.13.0+cu130`, and
-model revision `4e9de7a0778dc1c362e983e6858f0e77542cbdca`.
+The measured environment used Linux, an RTX 3060 12 GB, vLLM `0.27.1`, PyTorch
+`2.13.0+cu130`, and model revision
+`4e9de7a0778dc1c362e983e6858f0e77542cbdca`.
 
 Download the official checkpoint directly on the GPU machine:
 
@@ -80,12 +82,28 @@ Inspect the exact vLLM command without starting the server:
 ./serve --model "$MINICPM5_MODEL_PATH" --dry-run
 ```
 
-The launcher verifies one RTX 3060 12 GB and never downloads weights. Other
-GPUs require `--allow-unsupported-gpu` and separate measurement.
+The launcher checks the selected NVIDIA GPU for compute capability 8.0 or
+newer and never downloads weights. It labels the RTX 3060 as measured and
+other accepted GPU architectures as compatible but unbenchmarked. Available
+VRAM and the installed vLLM wheel still determine whether startup succeeds.
+
+## GPU compatibility
+
+| Hardware | Default profile |
+| --- | --- |
+| NVIDIA Ampere or newer (SM80+) | Architecture-compatible; benchmark separately |
+| RTX 3060 12 GB | Supported and benchmarked here |
+| NVIDIA Turing (SM75) | Not supported by this BF16 profile |
+| AMD, Intel, Apple GPU or CPU | Not supported by this package |
+
+vLLM can use Marlin FP8 weight-only kernels on older NVIDIA hardware, but this
+release also uses BF16, which makes SM80+ the effective floor. Turing would
+need a separately tested FP16 profile. See the
+[vLLM FP8 documentation](https://github.com/vllm-project/vllm/blob/main/docs/features/quantization/llm_compressor/fp8.md).
 
 ## What this release contains
 
-- the default RTX 3060 FP8 serving profile and one-command launcher;
+- the default NVIDIA SM80+ FP8 serving profile and one-command launcher;
 - the frozen benchmark specifications and document-hash manifest;
 - full task-level paired comparison receipts;
 - a reproducible chart generator and CPU-safe test suite.
@@ -115,9 +133,11 @@ python3 -m unittest discover -s tests -p 'test_*.py' -v
 
 ## Scope
 
-The measured speed applies directly to the pinned checkpoint, software,
-single-request workload and tested RTX 3060. The four 50-task domain slices
-are release screens, not full official leaderboard reproductions.
+The software profile is released for NVIDIA SM80+ GPUs. The measured speedup
+applies directly only to the pinned checkpoint, software, single-request
+workload and tested RTX 3060. Other GPUs may select different vLLM kernels and
+must be benchmarked separately. The four 50-task domain slices are release
+screens, not full official leaderboard reproductions.
 
 ## Attribution and licenses
 

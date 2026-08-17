@@ -16,6 +16,7 @@ PROFILE_SCHEMA = "minicpm5-serving-profile-v1"
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROFILES_DIR = PROJECT_ROOT / "profiles"
 DEFAULT_PORT = 8000
+MINIMUM_COMPUTE_CAPABILITY = (8, 0)
 
 
 def load_profile(name: str, profiles_dir: Path = PROFILES_DIR) -> dict[str, Any]:
@@ -60,31 +61,74 @@ def resolve_model(profile: Mapping[str, Any], explicit_model: Path | None) -> Pa
     return model
 
 
-def verify_rtx3060() -> dict[str, Any]:
+def _parse_compute_capability(value: str) -> tuple[int, int]:
+    fields = value.strip().split(".", 1)
+    if len(fields) != 2 or not all(field.isdigit() for field in fields):
+        raise ValueError(f"Invalid NVIDIA compute capability: {value!r}")
+    return int(fields[0]), int(fields[1])
+
+
+def verify_supported_nvidia_gpu() -> dict[str, Any]:
     binary = shutil.which("nvidia-smi")
     if binary is None:
         raise ValueError("nvidia-smi is unavailable; use --allow-unsupported-gpu to bypass")
-    result = subprocess.run(
+
+    command = [binary]
+    visible_devices = os.environ.get("CUDA_VISIBLE_DEVICES")
+    selected_device = None
+    if visible_devices is not None:
+        visible_devices = visible_devices.strip()
+        if not visible_devices or visible_devices == "-1":
+            raise ValueError("CUDA_VISIBLE_DEVICES exposes no NVIDIA GPU")
+        selected_device = visible_devices.split(",", 1)[0].strip()
+        if not selected_device:
+            raise ValueError("CUDA_VISIBLE_DEVICES has no first NVIDIA GPU")
+        command.append(f"--id={selected_device}")
+    command.extend(
         [
-            binary,
-            "--query-gpu=name,memory.total",
+            "--query-gpu=name,memory.total,compute_cap",
             "--format=csv,noheader,nounits",
-        ],
+        ]
+    )
+    result = subprocess.run(
+        command,
         capture_output=True,
         text=True,
         check=True,
     )
     rows = [row.strip() for row in result.stdout.splitlines() if row.strip()]
-    if len(rows) != 1:
-        raise ValueError(f"Expected one GPU, observed {len(rows)}")
-    name, memory = [field.strip() for field in rows[0].rsplit(",", 1)]
-    memory_mib = int(memory)
-    if "RTX 3060" not in name or not 11800 <= memory_mib <= 12500:
+    if not rows:
+        raise ValueError("nvidia-smi reported no NVIDIA GPU")
+
+    fields = [field.strip() for field in rows[0].rsplit(",", 2)]
+    if len(fields) != 3:
+        raise ValueError(f"Cannot parse nvidia-smi GPU row: {rows[0]!r}")
+    name, memory, capability_text = fields
+    try:
+        memory_mib = int(memory)
+    except ValueError as exc:
+        raise ValueError(f"Invalid NVIDIA memory size: {memory!r}") from exc
+    capability = _parse_compute_capability(capability_text)
+    if capability < MINIMUM_COMPUTE_CAPABILITY:
         raise ValueError(
-            f"Profile was validated on RTX 3060 12 GB; observed {name}, {memory_mib} MiB. "
-            "Use --allow-unsupported-gpu only for a separately measured deployment."
+            "The default BF16 FP8 profile requires NVIDIA compute capability "
+            f">= 8.0 (Ampere or newer); observed {name} with SM "
+            f"{capability[0]}.{capability[1]}. Use --allow-unsupported-gpu only "
+            "for an independently validated configuration."
         )
-    return {"name": name, "memory_mib": memory_mib}
+    measured_reference = "RTX 3060" in name and 11800 <= memory_mib <= 12500
+    return {
+        "name": name,
+        "memory_mib": memory_mib,
+        "compute_capability": f"{capability[0]}.{capability[1]}",
+        "compatibility": "nvidia-sm80-plus",
+        "benchmark_status": (
+            "measured-rtx3060-reference"
+            if measured_reference
+            else "compatible-unbenchmarked"
+        ),
+        "selected_device": selected_device or "gpu-index-0",
+    }
 
 
 def build_command(
@@ -119,7 +163,11 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--port", type=int, default=DEFAULT_PORT)
     parser.add_argument("--vllm-bin", default="vllm")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--allow-unsupported-gpu", action="store_true")
+    parser.add_argument(
+        "--allow-unsupported-gpu",
+        action="store_true",
+        help="skip the NVIDIA SM80+ preflight without claiming compatibility",
+    )
     parser.add_argument(
         "extra_arguments",
         nargs=argparse.REMAINDER,
@@ -143,7 +191,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         hardware = None
         if not args.dry_run and not args.allow_unsupported_gpu:
-            hardware = verify_rtx3060()
+            hardware = verify_supported_nvidia_gpu()
         if args.dry_run:
             print(
                 json.dumps(

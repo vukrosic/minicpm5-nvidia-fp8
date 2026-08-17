@@ -42,8 +42,9 @@ The invalid draft comparison was not used for the release decision.
 
 ## Product decision
 
-Online block FP8 is the default end-user release. The BF16 configuration is
-retained only as the benchmark reference needed to reproduce the speed and
-quality comparison. The repository does not claim unchanged intelligence,
-mathematical equivalence, or portability of the measured speedup to another
-GPU.
+Online block FP8 is the default end-user release for NVIDIA GPUs with compute
+capability 8.0 or newer. The BF16 configuration is retained only as the
+benchmark reference needed to reproduce the speed and quality comparison. The
+RTX 3060 speedup is not claimed for other GPUs, which may select different
+vLLM kernels. The repository does not claim unchanged intelligence or
+mathematical equivalence.
