@@ -1,0 +1,188 @@
+{
+  "schema": "minicpm5-rtx3060-release-summary-v1",
+  "recorded_at": "2026-08-17T09:05:09.052063+00:00",
+  "selection": {
+    "profile": "recommended",
+    "family": "online-block-fp8",
+    "status": "selected",
+    "basis": "user_accepted_measured_speed_quality_tradeoff",
+    "release_class": "speed_quality_tradeoff",
+    "disclosure": "Selected for measured single-request speed as an explicit quality tradeoff. HumanEval+ scored 96/164 versus BF16's 95/164 with eight paired losses and nine gains; the frozen 200-task cross-domain suite scored 87/200 versus 89/200 with 12 losses and 10 gains."
+  },
+  "target": {
+    "model": "openbmb/MiniCPM5-1B",
+    "revision": "4e9de7a0778dc1c362e983e6858f0e77542cbdca",
+    "hardware": "NVIDIA GeForce RTX 3060 12 GB",
+    "batch_size": 1,
+    "concurrency": 1
+  },
+  "performance": {
+    "baseline": {
+      "family": "bf16-vllm",
+      "decode_tokens_per_second_median": 165.38992775143123,
+      "end_to_end_output_tokens_per_second_median": 152.42314256723353,
+      "ttft_seconds_median": 0.03860056400299072
+    },
+    "recommended": {
+      "family": "online-block-fp8",
+      "decode_tokens_per_second_median": 248.5161760547295,
+      "decode_speedup": 1.5026076825441925,
+      "end_to_end_output_tokens_per_second_median": 221.42449891336344,
+      "ttft_seconds_median": 0.035109519958496094
+    }
+  },
+  "quality": {
+    "development_canary": {
+      "task_count": 38,
+      "baseline_passed": 27,
+      "candidate_passed": 27,
+      "paired_losses": [],
+      "paired_loss_count": 0,
+      "paired_gains": [],
+      "paired_gain_count": 0,
+      "exact_token_task_count": 30
+    },
+    "humanevalplus_full": {
+      "compared_count": 164,
+      "reference_passed": 95,
+      "candidate_passed": 96,
+      "aggregate_delta": 1,
+      "paired_losses": [
+        "HumanEval/10",
+        "HumanEval/59",
+        "HumanEval/73",
+        "HumanEval/77",
+        "HumanEval/84",
+        "HumanEval/109",
+        "HumanEval/125",
+        "HumanEval/131"
+      ],
+      "paired_loss_count": 8,
+      "paired_gains": [
+        "HumanEval/33",
+        "HumanEval/95",
+        "HumanEval/97",
+        "HumanEval/122",
+        "HumanEval/128",
+        "HumanEval/148",
+        "HumanEval/157",
+        "HumanEval/160",
+        "HumanEval/161"
+      ],
+      "paired_gain_count": 9,
+      "stable_pass_count": 87,
+      "stable_failure_count": 60,
+      "unknown_task_ids": [],
+      "zero_paired_losses": false,
+      "passes_no_observed_loss_gate": false,
+      "exact_token_task_count": 62,
+      "exact_solution_task_count": 62
+    },
+    "release_intelligence_mini": {
+      "suite_id": "release-intelligence-mini-v1",
+      "task_count": 200,
+      "reference_passed": 89,
+      "candidate_passed": 87,
+      "aggregate_delta": -2,
+      "paired_loss_count": 12,
+      "paired_gain_count": 10,
+      "discordant_task_count": 22,
+      "paired_direction_exact_p_value": 0.8318119049072266,
+      "output_agreement_count": 122,
+      "classification": "aggregate_regression_observed_on_frozen_subset",
+      "uncertainty_note": "The exact paired-direction p-value tests whether losses and gains are directionally imbalanced within this frozen subset. It does not remove benchmark-selection uncertainty or prove equivalence when large.",
+      "claim_boundary": "Exactly 200 frozen public-benchmark items: 50 per domain. This is a paired release smoke suite, not a full official leaderboard reproduction. Deterministic decoding removes sampling variance but the finite task sample leaves benchmark-selection uncertainty.",
+      "domains": {
+        "gsm8k": {
+          "task_count": 50,
+          "reference_passed": 19,
+          "candidate_passed": 18,
+          "score_delta": -1,
+          "paired_loss_count": 5,
+          "paired_gain_count": 4,
+          "discordant_task_count": 9,
+          "paired_direction_exact_p_value": 1.0,
+          "output_agreement_count": 27
+        },
+        "mmlu": {
+          "task_count": 50,
+          "reference_passed": 16,
+          "candidate_passed": 18,
+          "score_delta": 2,
+          "paired_loss_count": 0,
+          "paired_gain_count": 2,
+          "discordant_task_count": 2,
+          "paired_direction_exact_p_value": 0.5,
+          "output_agreement_count": 48
+        },
+        "ceval": {
+          "task_count": 50,
+          "reference_passed": 16,
+          "candidate_passed": 18,
+          "score_delta": 2,
+          "paired_loss_count": 1,
+          "paired_gain_count": 3,
+          "discordant_task_count": 4,
+          "paired_direction_exact_p_value": 0.625,
+          "output_agreement_count": 45
+        },
+        "ifeval": {
+          "task_count": 50,
+          "reference_passed": 38,
+          "candidate_passed": 33,
+          "score_delta": -5,
+          "paired_loss_count": 6,
+          "paired_gain_count": 1,
+          "discordant_task_count": 7,
+          "paired_direction_exact_p_value": 0.125,
+          "output_agreement_count": 2
+        }
+      }
+    }
+  },
+  "runtime": {
+    "profile_schema": "minicpm5-serving-profile-v1",
+    "vllm_arguments": [
+      "--dtype",
+      "bfloat16",
+      "--quantization",
+      "fp8_per_block",
+      "--max-model-len",
+      "4096",
+      "--max-num-seqs",
+      "1",
+      "--gpu-memory-utilization",
+      "0.70",
+      "--attention-backend",
+      "triton_attn",
+      "--performance-mode",
+      "balanced",
+      "--no-enable-prefix-caching",
+      "--served-model-name",
+      "openbmb/MiniCPM5-1B-fp8-rtx3060"
+    ],
+    "model_environment_variable": "MINICPM5_MODEL_PATH",
+    "startup": {
+      "validated": true,
+      "default_remote_port": 8000,
+      "local_forward_example": "-L 8080:localhost:8000",
+      "cold_start_seconds_approx": 142.0,
+      "engine_initialization_seconds": 117.78,
+      "torch_compile_seconds": 15.31,
+      "http_checks": {
+        "health": 200,
+        "models": 200,
+        "completion": 200
+      },
+      "warm_start_measured": false
+    }
+  },
+  "evidence": {
+    "profile": "profiles/recommended.json",
+    "safe_profile": "profiles/safe-bf16.json",
+    "humanevalplus_comparison": "results/humanevalplus-comparison.json",
+    "release_intelligence_comparison": "results/release-intelligence-comparison.json",
+    "release_intelligence_manifest": "results/release-intelligence-manifest.json"
+  },
+  "claim_boundary": "Selected speed-quality tradeoff on one RTX 3060 and the pinned model. FP8 improved aggregate HumanEval+ by one task while producing eight paired losses and nine gains. On the frozen 200-task GSM8K, MMLU, C-Eval, and IFEval mini-suite, FP8 scored 87 versus BF16's 89 with 12 paired losses and 10 gains. It is not a no-degradation or unchanged-intelligence claim; the finite subset leaves benchmark-selection uncertainty."
+}

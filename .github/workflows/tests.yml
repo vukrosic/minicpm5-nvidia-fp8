@@ -1,0 +1,20 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  cpu-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - run: |
+          python3 scripts/render_benchmark_chart.py \
+            --decision results/release-summary.json \
+            --output /tmp/benchmark-summary.svg
+          cmp /tmp/benchmark-summary.svg docs/assets/benchmark-summary.svg

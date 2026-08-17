@@ -1,0 +1,46 @@
+{
+  "schema": "minicpm5-quality-canary-provenance-v2",
+  "id": "quality-canary-v2",
+  "status": "frozen_before_model_runs",
+  "authored_at": "2026-08-17",
+  "manifest": "benchmarks/quality/canary-v2.jsonl",
+  "manifest_sha256": "bc82a0aea4de3fcff5f539b5f5a7e1500a97ecce42ad8758ddb8976cec1ba2bb",
+  "source": {
+    "type": "project_authored_synthetic",
+    "external_dataset": false,
+    "source_url": null,
+    "revision": "v2",
+    "license_note": "Project-authored synthetic prompts. This repository does not currently declare a distribution license."
+  },
+  "construction": {
+    "written_without_inspecting_candidate_outputs": true,
+    "task_count": 30,
+    "domains": {
+      "code_reasoning": 6,
+      "math": 6,
+      "knowledge": 6,
+      "chinese": 6,
+      "instruction_following": 6
+    },
+    "validator_counts": {
+      "choice_v1": 24,
+      "exact_text_v1": 5,
+      "json_equal_v1": 1
+    }
+  },
+  "paired_external_component": {
+    "name": "HumanEval+ fixed executable subset",
+    "task_ids": [
+      "HumanEval/0",
+      "HumanEval/1",
+      "HumanEval/2",
+      "HumanEval/3",
+      "HumanEval/4",
+      "HumanEval/5",
+      "HumanEval/6",
+      "HumanEval/7"
+    ],
+    "manifest_policy": "Downloaded task prompts stay on the GPU and are not committed. Dataset hash and EvalPlus version are recorded in run receipts."
+  },
+  "claim_boundary": "A small deterministic paired regression alarm, not a public benchmark, leaderboard reproduction, or proof of unchanged general intelligence."
+}

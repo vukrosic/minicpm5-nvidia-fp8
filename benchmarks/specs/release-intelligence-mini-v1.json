@@ -1,0 +1,102 @@
+{
+  "schema": "minicpm5-release-intelligence-spec-v1",
+  "id": "release-intelligence-mini-v1",
+  "status": "frozen_before_model_runs",
+  "frozen_at": "2026-08-17",
+  "objective": "A fast, deterministic, paired intelligence screen of the recommended online block-FP8 profile against the BF16 serving reference.",
+  "families": [
+    "bf16-vllm",
+    "online-block-fp8"
+  ],
+  "lm_eval": {
+    "version": "0.4.12",
+    "apply_official_chat_template": true,
+    "enable_thinking": false,
+    "fewshot_as_multiturn": false,
+    "temperature": 0.0,
+    "seed": 0,
+    "batch_size": 1,
+    "concurrency": 1,
+    "max_model_len": 4096
+  },
+  "domains": {
+    "gsm8k": {
+      "title": "GSM8K math",
+      "dataset": "openai/gsm8k",
+      "split": "test",
+      "task_names": [
+        "gsm8k"
+      ],
+      "dataset_config_rule": "literal:main",
+      "limit_per_task": 50,
+      "total_tasks": 50,
+      "num_fewshot": 5,
+      "generation_max_tokens": 512,
+      "primary_metric": "exact_match",
+      "filter": "flexible-extract"
+    },
+    "mmlu": {
+      "title": "MMLU knowledge and reasoning",
+      "dataset": "cais/mmlu",
+      "split": "test",
+      "task_names": [
+        "mmlu_abstract_algebra",
+        "mmlu_anatomy",
+        "mmlu_college_computer_science",
+        "mmlu_high_school_world_history",
+        "mmlu_logical_fallacies",
+        "mmlu_machine_learning",
+        "mmlu_management",
+        "mmlu_moral_scenarios",
+        "mmlu_professional_law",
+        "mmlu_us_foreign_policy"
+      ],
+      "dataset_config_rule": "strip_prefix:mmlu_",
+      "limit_per_task": 5,
+      "total_tasks": 50,
+      "num_fewshot": 0,
+      "primary_metric": "acc",
+      "filter": "none"
+    },
+    "ceval": {
+      "title": "C-Eval Chinese knowledge and reasoning",
+      "dataset": "ceval/ceval-exam",
+      "split": "val",
+      "task_names": [
+        "ceval-valid_advanced_mathematics",
+        "ceval-valid_business_administration",
+        "ceval-valid_clinical_medicine",
+        "ceval-valid_college_programming",
+        "ceval-valid_computer_network",
+        "ceval-valid_high_school_chinese",
+        "ceval-valid_high_school_history",
+        "ceval-valid_law",
+        "ceval-valid_logic",
+        "ceval-valid_modern_chinese_history"
+      ],
+      "dataset_config_rule": "strip_prefix:ceval-valid_",
+      "limit_per_task": 5,
+      "total_tasks": 50,
+      "num_fewshot": 0,
+      "primary_metric": "acc",
+      "filter": "none"
+    },
+    "ifeval": {
+      "title": "IFEval instruction following",
+      "dataset": "google/IFEval",
+      "split": "train",
+      "task_names": [
+        "ifeval"
+      ],
+      "dataset_config_rule": "none",
+      "limit_per_task": 50,
+      "total_tasks": 50,
+      "num_fewshot": 0,
+      "generation_max_tokens": 1280,
+      "primary_metric": "prompt_level_strict_acc",
+      "filter": "none"
+    }
+  },
+  "comparison_rule": "Report aggregate scores, exact paired task losses and gains, and output agreement. Do not convert a tie or gain into an unchanged-intelligence claim.",
+  "claim_boundary": "Exactly 200 frozen public-benchmark items: 50 per domain. This is a paired release smoke suite, not a full official leaderboard reproduction. Deterministic decoding removes sampling variance but the finite task sample leaves benchmark-selection uncertainty."
+}

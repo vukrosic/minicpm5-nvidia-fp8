@@ -1,0 +1,6 @@
+{"id":"en_explain","text":"Explain in plain English why batching can improve GPU inference throughput but hurt latency."}
+{"id":"zh_explain","text":"请简洁解释为什么大语言模型推理中的 KV 缓存能够减少重复计算。"}
+{"id":"code_python","text":"Write a Python function that merges two sorted integer lists without calling sorted(). Include type hints."}
+{"id":"reasoning","text":"A server handles 240 requests per minute. Each request generates 48 tokens. Calculate the generated tokens per second and show the steps."}
+{"id":"structured","text":"Return a JSON object with keys hypothesis, metric, and stop_condition for testing a faster RMSNorm kernel."}
+{"id":"repetitive","text":"Continue this exact pattern for several lines:\nalpha beta gamma\nalpha beta gamma\nalpha beta gamma\n"}

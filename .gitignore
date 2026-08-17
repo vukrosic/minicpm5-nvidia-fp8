@@ -1,0 +1,11 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+runs/
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.ckpt

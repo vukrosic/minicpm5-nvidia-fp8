@@ -1,0 +1,36 @@
+{
+  "schema": "minicpm5-benchmark-spec-v1",
+  "id": "quality-canary-v2",
+  "kind": "paired_quality_canary",
+  "execution": "vllm_family_evaluator",
+  "status": "frozen",
+  "description": "Thirty project-authored deterministic tasks plus the fixed eight-task HumanEval+ executable subset.",
+  "custom_manifest": "benchmarks/quality/canary-v2.jsonl",
+  "custom_domains": [
+    "code_reasoning",
+    "math",
+    "knowledge",
+    "chinese",
+    "instruction_following"
+  ],
+  "custom_examples_per_domain": 6,
+  "humaneval_task_ids": [
+    "HumanEval/0",
+    "HumanEval/1",
+    "HumanEval/2",
+    "HumanEval/3",
+    "HumanEval/4",
+    "HumanEval/5",
+    "HumanEval/6",
+    "HumanEval/7"
+  ],
+  "total_tasks": 38,
+  "generation": {
+    "greedy": true,
+    "temperature": 0.0,
+    "seed": 0,
+    "thinking_enabled": false
+  },
+  "primary_admission_rule": "A candidate is eligible only when it has zero paired task losses relative to BF16 across all 38 frozen tasks.",
+  "claim_boundary": "Small deterministic paired regression gate; not a public leaderboard reproduction or proof of unchanged general intelligence."
+}

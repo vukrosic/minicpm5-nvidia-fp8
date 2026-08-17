@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this runtime profile or evidence harness, please cite this repository."
+title: "MiniCPM5-1B inference optimization for RTX 3060"
+type: software
+authors:
+  - family-names: "Rosić"
+    given-names: "Vuk"
+year: 2026
+license: MIT
+repository-code: "https://github.com/vukrosic/minicpm5-rtx3060"
+url: "https://github.com/vukrosic/minicpm5-rtx3060"
+keywords:
+  - MiniCPM5
+  - vLLM
+  - FP8
+  - RTX 3060
+  - inference optimization

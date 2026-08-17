@@ -1,0 +1,1736 @@
+{
+  "schema": "minicpm5-release-intelligence-comparison-v3",
+  "suite_id": "release-intelligence-mini-v1",
+  "recorded_at": "2026-08-17T08:59:04.590965+00:00",
+  "reference_family": "bf16-vllm",
+  "candidate_family": "online-block-fp8",
+  "task_count": 200,
+  "reference_passed": 89,
+  "candidate_passed": 87,
+  "aggregate_delta": -2,
+  "paired_losses": [
+    "gsm8k/gsm8k:1",
+    "gsm8k/gsm8k:4",
+    "gsm8k/gsm8k:14",
+    "gsm8k/gsm8k:17",
+    "gsm8k/gsm8k:48",
+    "ceval/ceval-valid_business_administration:4",
+    "ifeval/ifeval:9",
+    "ifeval/ifeval:15",
+    "ifeval/ifeval:16",
+    "ifeval/ifeval:28",
+    "ifeval/ifeval:39",
+    "ifeval/ifeval:45"
+  ],
+  "paired_loss_count": 12,
+  "paired_gains": [
+    "gsm8k/gsm8k:16",
+    "gsm8k/gsm8k:32",
+    "gsm8k/gsm8k:33",
+    "gsm8k/gsm8k:36",
+    "mmlu/mmlu_management:2",
+    "mmlu/mmlu_management:3",
+    "ceval/ceval-valid_advanced_mathematics:2",
+    "ceval/ceval-valid_advanced_mathematics:4",
+    "ceval/ceval-valid_clinical_medicine:0",
+    "ifeval/ifeval:36"
+  ],
+  "paired_gain_count": 10,
+  "discordant_task_count": 22,
+  "paired_direction_exact_p_value": 0.8318119049072266,
+  "output_agreement_count": 122,
+  "classification": "aggregate_regression_observed_on_frozen_subset",
+  "domains": {
+    "gsm8k": {
+      "task_count": 50,
+      "reference_passed": 19,
+      "candidate_passed": 18,
+      "score_delta": -1,
+      "paired_losses": [
+        "gsm8k:1",
+        "gsm8k:4",
+        "gsm8k:14",
+        "gsm8k:17",
+        "gsm8k:48"
+      ],
+      "paired_loss_count": 5,
+      "paired_gains": [
+        "gsm8k:16",
+        "gsm8k:32",
+        "gsm8k:33",
+        "gsm8k:36"
+      ],
+      "paired_gain_count": 4,
+      "discordant_task_count": 9,
+      "paired_direction_exact_p_value": 1.0,
+      "output_agreement_count": 27,
+      "tasks": [
+        {
+          "task_id": "gsm8k:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:1",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:4",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:5",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:6",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:7",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:8",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:9",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:10",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:11",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:12",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:13",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:14",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:15",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:16",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:17",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:18",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:19",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:20",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:21",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:22",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:23",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:24",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:25",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:26",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:27",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:28",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:29",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:30",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:31",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:32",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:33",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:34",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:35",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:36",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:37",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:38",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:39",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:40",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:41",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:42",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:43",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:44",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:45",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:46",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:47",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:48",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "gsm8k:49",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        }
+      ]
+    },
+    "mmlu": {
+      "task_count": 50,
+      "reference_passed": 16,
+      "candidate_passed": 18,
+      "score_delta": 2,
+      "paired_losses": [],
+      "paired_loss_count": 0,
+      "paired_gains": [
+        "mmlu_management:2",
+        "mmlu_management:3"
+      ],
+      "paired_gain_count": 2,
+      "discordant_task_count": 2,
+      "paired_direction_exact_p_value": 0.5,
+      "output_agreement_count": 48,
+      "tasks": [
+        {
+          "task_id": "mmlu_abstract_algebra:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_abstract_algebra:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_abstract_algebra:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_abstract_algebra:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_abstract_algebra:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_anatomy:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_anatomy:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_anatomy:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_anatomy:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "mmlu_anatomy:4",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 1,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "mmlu_college_computer_science:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_college_computer_science:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_college_computer_science:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_college_computer_science:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_college_computer_science:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_high_school_world_history:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_high_school_world_history:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_high_school_world_history:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_high_school_world_history:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_high_school_world_history:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_logical_fallacies:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_logical_fallacies:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_logical_fallacies:2",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "mmlu_logical_fallacies:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_logical_fallacies:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_machine_learning:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_machine_learning:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_machine_learning:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_machine_learning:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_machine_learning:4",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_management:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_management:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_management:2",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": 0,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "mmlu_management:3",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": 0,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_management:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 1,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "mmlu_moral_scenarios:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_moral_scenarios:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_moral_scenarios:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_moral_scenarios:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_moral_scenarios:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_professional_law:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_professional_law:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_professional_law:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "mmlu_professional_law:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_professional_law:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_us_foreign_policy:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_us_foreign_policy:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_us_foreign_policy:2",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "mmlu_us_foreign_policy:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "mmlu_us_foreign_policy:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        }
+      ]
+    },
+    "ceval": {
+      "task_count": 50,
+      "reference_passed": 16,
+      "candidate_passed": 18,
+      "score_delta": 2,
+      "paired_losses": [
+        "ceval-valid_business_administration:4"
+      ],
+      "paired_loss_count": 1,
+      "paired_gains": [
+        "ceval-valid_advanced_mathematics:2",
+        "ceval-valid_advanced_mathematics:4",
+        "ceval-valid_clinical_medicine:0"
+      ],
+      "paired_gain_count": 3,
+      "discordant_task_count": 4,
+      "paired_direction_exact_p_value": 0.625,
+      "output_agreement_count": 45,
+      "tasks": [
+        {
+          "task_id": "ceval-valid_advanced_mathematics:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_advanced_mathematics:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_advanced_mathematics:2",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": 0,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "ceval-valid_advanced_mathematics:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_advanced_mathematics:4",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": 2,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_business_administration:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 1,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "ceval-valid_business_administration:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 3,
+          "candidate_choice": 3
+        },
+        {
+          "task_id": "ceval-valid_business_administration:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_business_administration:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_business_administration:4",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": 0,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "ceval-valid_clinical_medicine:0",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": 0,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "ceval-valid_clinical_medicine:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_clinical_medicine:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_clinical_medicine:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_clinical_medicine:4",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_college_programming:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_college_programming:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "ceval-valid_college_programming:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "ceval-valid_college_programming:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_college_programming:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_computer_network:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": 0,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "ceval-valid_computer_network:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_computer_network:2",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "ceval-valid_computer_network:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_computer_network:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_chinese:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_chinese:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_chinese:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_chinese:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_chinese:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_history:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_history:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_history:2",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_history:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_high_school_history:4",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 1,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "ceval-valid_law:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_law:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_law:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 1,
+          "candidate_choice": 1
+        },
+        {
+          "task_id": "ceval-valid_law:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_law:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_logic:0",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_logic:1",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_logic:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_logic:3",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_logic:4",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "ceval-valid_modern_chinese_history:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "ceval-valid_modern_chinese_history:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_modern_chinese_history:2",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 0,
+          "candidate_choice": 0
+        },
+        {
+          "task_id": "ceval-valid_modern_chinese_history:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        },
+        {
+          "task_id": "ceval-valid_modern_chinese_history:4",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": 2,
+          "candidate_choice": 2
+        }
+      ]
+    },
+    "ifeval": {
+      "task_count": 50,
+      "reference_passed": 38,
+      "candidate_passed": 33,
+      "score_delta": -5,
+      "paired_losses": [
+        "ifeval:9",
+        "ifeval:15",
+        "ifeval:16",
+        "ifeval:28",
+        "ifeval:39",
+        "ifeval:45"
+      ],
+      "paired_loss_count": 6,
+      "paired_gains": [
+        "ifeval:36"
+      ],
+      "paired_gain_count": 1,
+      "discordant_task_count": 7,
+      "paired_direction_exact_p_value": 0.125,
+      "output_agreement_count": 2,
+      "tasks": [
+        {
+          "task_id": "ifeval:0",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:1",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:2",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:3",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:4",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:5",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:6",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:7",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:8",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:9",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:10",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:11",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:12",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:13",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:14",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:15",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:16",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:17",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:18",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": true,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:19",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:20",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:21",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:22",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:23",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:24",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:25",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:26",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:27",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:28",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:29",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:30",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:31",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:32",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:33",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:34",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:35",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:36",
+          "reference_passed": false,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:37",
+          "reference_passed": false,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:38",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:39",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:40",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:41",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:42",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:43",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:44",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:45",
+          "reference_passed": true,
+          "candidate_passed": false,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:46",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:47",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:48",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        },
+        {
+          "task_id": "ifeval:49",
+          "reference_passed": true,
+          "candidate_passed": true,
+          "output_agreement": false,
+          "reference_choice": null,
+          "candidate_choice": null
+        }
+      ]
+    }
+  },
+  "uncertainty_note": "The exact paired-direction p-value tests whether losses and gains are directionally imbalanced within this frozen subset. It does not remove benchmark-selection uncertainty or prove equivalence when large.",
+  "claim_boundary": "Exactly 200 frozen public-benchmark items: 50 per domain. This is a paired release smoke suite, not a full official leaderboard reproduction. Deterministic decoding removes sampling variance but the finite task sample leaves benchmark-selection uncertainty."
+}

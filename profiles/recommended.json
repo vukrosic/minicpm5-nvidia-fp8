@@ -1,0 +1,21 @@
+{
+  "schema": "minicpm5-serving-profile-v1",
+  "name": "recommended",
+  "title": "Block FP8 speed-quality profile",
+  "release_class": "speed_quality_tradeoff",
+  "model_environment_variable": "MINICPM5_MODEL_PATH",
+  "requires_local_model": true,
+  "measured_hardware": "NVIDIA GeForce RTX 3060 12 GB",
+  "vllm_arguments": [
+    "--dtype", "bfloat16",
+    "--quantization", "fp8_per_block",
+    "--max-model-len", "4096",
+    "--max-num-seqs", "1",
+    "--gpu-memory-utilization", "0.70",
+    "--attention-backend", "triton_attn",
+    "--performance-mode", "balanced",
+    "--no-enable-prefix-caching",
+    "--served-model-name", "openbmb/MiniCPM5-1B-fp8-rtx3060"
+  ],
+  "disclosure": "Selected for measured single-request speed as an explicit quality tradeoff. HumanEval+ scored 96/164 versus BF16's 95/164 with eight paired losses and nine gains. The frozen 200-task GSM8K, MMLU, C-Eval, and IFEval mini-suite scored 87/200 versus BF16's 89/200 with 12 paired losses and 10 gains."
+}

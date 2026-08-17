@@ -1,0 +1,1468 @@
+{
+  "schema": "minicpm5-release-intelligence-manifest-v1",
+  "id": "release-intelligence-mini-v1",
+  "frozen_at": "2026-08-17T08:37:18.651498+00:00",
+  "spec_path": "benchmarks/specs/release-intelligence-mini-v1.json",
+  "spec_sha256": "03b9ac6f57e19ed56d23e5517a97e8eeadd77c529f56dbf9e2ea2c5d692d3715",
+  "lm_eval_version": "0.4.12",
+  "datasets_version": "5.0.1",
+  "dataset_revisions": {
+    "openai/gsm8k": "740312add88f781978c0658806c59bc2815b9866",
+    "cais/mmlu": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "ceval/ceval-exam": "617524a00b307ff6f9933702f724131fe12ca7ce",
+    "google/IFEval": "966cd89545d6b6acfd7638bc708b98261ca58e84"
+  },
+  "datasets": [
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "repo_id": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "config": "main",
+      "split": "test",
+      "dataset_fingerprint": "59ec1b7f9357c7a2",
+      "dataset_rows": 1319,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_abstract_algebra",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "abstract_algebra",
+      "split": "test",
+      "dataset_fingerprint": "a405e35a20e96c3e",
+      "dataset_rows": 100,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_anatomy",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "anatomy",
+      "split": "test",
+      "dataset_fingerprint": "f5316a25c7cd3834",
+      "dataset_rows": 135,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_college_computer_science",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "college_computer_science",
+      "split": "test",
+      "dataset_fingerprint": "17407d242be5fce7",
+      "dataset_rows": 100,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_high_school_world_history",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "high_school_world_history",
+      "split": "test",
+      "dataset_fingerprint": "7bc6897c1ad886c5",
+      "dataset_rows": 237,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_logical_fallacies",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "logical_fallacies",
+      "split": "test",
+      "dataset_fingerprint": "f65d6f4a4236abee",
+      "dataset_rows": 163,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_machine_learning",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "machine_learning",
+      "split": "test",
+      "dataset_fingerprint": "43ddde1813be4e9f",
+      "dataset_rows": 112,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_management",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "management",
+      "split": "test",
+      "dataset_fingerprint": "91c15f84eda754f9",
+      "dataset_rows": 103,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_moral_scenarios",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "moral_scenarios",
+      "split": "test",
+      "dataset_fingerprint": "f8618f6d3e96a1b5",
+      "dataset_rows": 895,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_professional_law",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "professional_law",
+      "split": "test",
+      "dataset_fingerprint": "c36e72f1d6cb6e5f",
+      "dataset_rows": 1534,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_us_foreign_policy",
+      "repo_id": "cais/mmlu",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "config": "us_foreign_policy",
+      "split": "test",
+      "dataset_fingerprint": "5082afc2b0bc4dbe",
+      "dataset_rows": 100,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_advanced_mathematics",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "advanced_mathematics",
+      "split": "val",
+      "dataset_fingerprint": "a713999e0dbdfead",
+      "dataset_rows": 19,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_business_administration",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "business_administration",
+      "split": "val",
+      "dataset_fingerprint": "9eb991dcb3ae829b",
+      "dataset_rows": 33,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_clinical_medicine",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "clinical_medicine",
+      "split": "val",
+      "dataset_fingerprint": "97e5d6eba67c4656",
+      "dataset_rows": 22,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_college_programming",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "college_programming",
+      "split": "val",
+      "dataset_fingerprint": "d3c116006e20d08d",
+      "dataset_rows": 37,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_computer_network",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "computer_network",
+      "split": "val",
+      "dataset_fingerprint": "3787cdc3ac62b729",
+      "dataset_rows": 19,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_chinese",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "high_school_chinese",
+      "split": "val",
+      "dataset_fingerprint": "fc421450b914fbb7",
+      "dataset_rows": 19,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_history",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "high_school_history",
+      "split": "val",
+      "dataset_fingerprint": "4526ff3d2dd46d1d",
+      "dataset_rows": 20,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_law",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "law",
+      "split": "val",
+      "dataset_fingerprint": "d79d5f71be6f8595",
+      "dataset_rows": 24,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_logic",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "logic",
+      "split": "val",
+      "dataset_fingerprint": "7132e39f4690e5a3",
+      "dataset_rows": 22,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_modern_chinese_history",
+      "repo_id": "ceval/ceval-exam",
+      "revision": "617524a00b307ff6f9933702f724131fe12ca7ce",
+      "config": "modern_chinese_history",
+      "split": "val",
+      "dataset_fingerprint": "de0328109fb21b90",
+      "dataset_rows": 23,
+      "dataset_version": "0.0.0"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "repo_id": "google/IFEval",
+      "revision": "966cd89545d6b6acfd7638bc708b98261ca58e84",
+      "config": null,
+      "split": "train",
+      "dataset_fingerprint": "62b01b907665bf3d",
+      "dataset_rows": 541,
+      "dataset_version": "0.0.0"
+    }
+  ],
+  "counts": {
+    "gsm8k": 50,
+    "mmlu": 50,
+    "ceval": 50,
+    "ifeval": 50
+  },
+  "rows": [
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 0,
+      "doc_sha256": "d975fa1ff1b1742a786bd2d002ab394f2a743f185353bc51eebf03bad875cbe6"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 1,
+      "doc_sha256": "a1433f0a901dce9036a87b6dc3a421fe335764bd136b82155fdbe7fd54febfa7"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 2,
+      "doc_sha256": "2d5ad16672166414eb2da5a396a9832d77e6ec7d8adfffb8004887174c759f2e"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 3,
+      "doc_sha256": "9a239b08df60c5a66733c2c7d3633a8005bed9602afb70cd5b024f988a86a64b"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 4,
+      "doc_sha256": "e0aa4f2259a6d83b1a5cd6f3b1b92c676849cb94ad3d01498816f96b31313c16"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 5,
+      "doc_sha256": "465c73684cc6ae028c1c2b77a676e632612825542d6a5c7e0fb8e80d5e23f478"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 6,
+      "doc_sha256": "cae6335f8c2d068bffc757827ccacff12abe9c15abb1088c57bd74ca3a82ee35"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 7,
+      "doc_sha256": "be86534386cccbf99a6d968f3ca70c7b8a7228d4dccaea7dadfa7d3cc60ca59d"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 8,
+      "doc_sha256": "f8dc1932551dd8266587e4a8f3f9cb84465c9b05eca2b76788c6582a9ecd21fa"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 9,
+      "doc_sha256": "24f37b08c35c81aeacbe7ad56a0e6dd0e478b98872bf854975fdd45d57fd5d46"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 10,
+      "doc_sha256": "6cb7266290df33247efe780a072a14736e523d27f72fb917c2d2b96cd986502e"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 11,
+      "doc_sha256": "b57bf22e37f8c744e77183f7152ae2ffa5952719742c4e4e0c2ea8b7e926509a"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 12,
+      "doc_sha256": "23e2df479692d9b5e73acc9fc74c5ebe61bfe1ea8f7183819dbe045c2ec552e3"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 13,
+      "doc_sha256": "4b291213a8badf0204266c9b5e66f2028efac662a42bfa1bb66e341b30996d1a"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 14,
+      "doc_sha256": "161ed4545c93791c2e582ec0fa1895983621c0471fea4ea5c82ee954293efa5c"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 15,
+      "doc_sha256": "c3193995b02461e75a6681f63a29ba11e7fc78ae0ea9cfdbb495164cb037e934"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 16,
+      "doc_sha256": "7dda2e14abc849c96d755e8fe2454b371821bb07dd01e9c9bb7fbe850a3f597e"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 17,
+      "doc_sha256": "376f9958fdc66e46ab551d144633109a3a772db9bd266db12d7287787d1661d9"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 18,
+      "doc_sha256": "7ecdf2d95e690a44ee2b21fc188993ebdaf366048e3325375ce066afa94a9bd3"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 19,
+      "doc_sha256": "0bfdb1a680d398468f5d50b946075b365edffe5e7322250ec51f5a380e326406"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 20,
+      "doc_sha256": "c9171d8b3df896bc4a0db06238f64f08b20730f576e842d9ce436e61f48af551"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 21,
+      "doc_sha256": "02b950750a0d27490fa20a5d4583d3991a8db53d9315dbb1d51c9bd0e9437b5d"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 22,
+      "doc_sha256": "26639db3981c76343fa9ab0693d6a491a48a38abce7695a12b0406e0ea831180"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 23,
+      "doc_sha256": "5a2ff2cdf8a03bc539e1f55f8f3b30e17a565f72e35c2f7eb0becad79467874c"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 24,
+      "doc_sha256": "9482b3efaf6b19edabcb3f9f8eb27c2cb749f0c878cec553bce39240b7944a20"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 25,
+      "doc_sha256": "073b526a5ba02ef15f6d9ad8675af9df0a86deda73d31c1a56649753961d41b4"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 26,
+      "doc_sha256": "4d692efb4be1032074d11d1aeea9bb27063cc1c58a04cd8566f1e143119ea829"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 27,
+      "doc_sha256": "fb08f5b11555a2adedef7f37dbe5d0d02f51e5c36040f33ff6f006f24d35232c"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 28,
+      "doc_sha256": "67a43144fe848f7158fad88db5112f5bae7bf8c988fc720d090dc714bb9d2cd5"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 29,
+      "doc_sha256": "32f41ec46041b9baebf17e767880771012618ab3a0bbb0cb2335c0aae88670e4"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 30,
+      "doc_sha256": "cbed674daf6ecc1e6ead8f9af8be7ebf9d16607f53f5df85da03cc67bfb578cc"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 31,
+      "doc_sha256": "bf8a78f79adc58dab29b203d55baf45a6e14cf96e4fc5056e68aca41c3cd61d6"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 32,
+      "doc_sha256": "639b9acb5a47494d3224afc680885032bbd05267ee1ad906f74db740f41c421b"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 33,
+      "doc_sha256": "f817dbe0e033b8ca8e95ab0df5b8827d8c9a0aa1896879a7d0e66bfeb0864dc8"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 34,
+      "doc_sha256": "0b21d535a5ee93a7ac96fca26dce13f7df05509b17818cb92d842aa4d16ed840"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 35,
+      "doc_sha256": "6077efe9d8fcbbb345f53bc0cc0697df06d93cc020c5f7541786a77984ecfdc5"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 36,
+      "doc_sha256": "98f14450593e5510de5cd80a44c97ce6e1488389fc559874326774ba154c1ba8"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 37,
+      "doc_sha256": "9bca8875d332438ec93d9b12030d9867815f18ce3f1409595b0394f5de463a23"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 38,
+      "doc_sha256": "225c5d0dbade4474e82947485d2e88a6d9a188620cfcca235e8da2ab6a18c14a"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 39,
+      "doc_sha256": "f17de81cb77d1bad596fbf3b097119c991f1f526bab23104cf25d6dae9914088"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 40,
+      "doc_sha256": "00f3ac1719be04ebdf35fb5ead74da3c4015c4efa267110a3a08acd3fc651135"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 41,
+      "doc_sha256": "790d280afee941fb06ea5f27428d2d68887e30445d6b4a0a898e6bcb76d96886"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 42,
+      "doc_sha256": "58434d3eb64578e651fb85c9993b014447f926514b2da900235bd773c7b7ab2c"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 43,
+      "doc_sha256": "931f3e0efdacb850149c323a75a54e4831ef6807e791577bf141ad3173cd6fbb"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 44,
+      "doc_sha256": "68e62ef1109e7e2c068c6f22126215508851f4cd1bb5e026b9f97fda1d3725f2"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 45,
+      "doc_sha256": "1390df16de5c9c2d30f7481c4f88f5ae9767d952cb2bc9bd080f480c06756385"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 46,
+      "doc_sha256": "3d6b80937dd1971957e72373ebeda7209f75822a92c2880f75e9c2085b29699c"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 47,
+      "doc_sha256": "7c0a03821687ad85aab768bd4197cd2fb90f7ad02c061f95524aedad0265dd41"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 48,
+      "doc_sha256": "80d95d16005a6769685726ea8eff2f701c01e5d9f32c93baa7897d37db120363"
+    },
+    {
+      "domain": "gsm8k",
+      "task_name": "gsm8k",
+      "dataset_index": 49,
+      "doc_sha256": "e895b7240eeeed307fae5ba00af3203f7666696495d1c7cd72bcbf7306ae4ab8"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_abstract_algebra",
+      "dataset_index": 0,
+      "doc_sha256": "23f206ab872c904963da6dd7663dc96ae13fbbc178c934f0c7ffac1ec52d4326"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_abstract_algebra",
+      "dataset_index": 1,
+      "doc_sha256": "ebcdb82adcf4067cd416fef3c805451928c8ccc5e160f8f89d72a3f240a16610"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_abstract_algebra",
+      "dataset_index": 2,
+      "doc_sha256": "6ec6fc24584b8b09ccdfff8713026efb914280bcd8c1e3782455c7c8804fd834"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_abstract_algebra",
+      "dataset_index": 3,
+      "doc_sha256": "9c7ccea536de04728751863817da5b8501eae477e9ef96abecb130aab033d9f5"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_abstract_algebra",
+      "dataset_index": 4,
+      "doc_sha256": "2e832e1d26c1556055bb6daf5c50378764626c4f92c51d6b196e6b85512c6159"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_anatomy",
+      "dataset_index": 0,
+      "doc_sha256": "3929e766665855cd5bcd38fe99c69965bf942a6ef17be24134796d0c41b1df1c"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_anatomy",
+      "dataset_index": 1,
+      "doc_sha256": "17d15f5de2614dc4f060a3b5a4a91fe165f7a7e8640ed5a2efa7e021afdd421d"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_anatomy",
+      "dataset_index": 2,
+      "doc_sha256": "9298e79d5b4f47c236cfdbb5454df4d80c983f31605ed13354a9fcabbb67f621"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_anatomy",
+      "dataset_index": 3,
+      "doc_sha256": "08ec1a2d46c9727c65018eff98f8962c8d332297c6529b06dfc09be487efa1d9"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_anatomy",
+      "dataset_index": 4,
+      "doc_sha256": "6515faced6afa0ebeb8376d4a8ebe0e3e1d2b83129ccfb0a5b4778e56c27668e"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_college_computer_science",
+      "dataset_index": 0,
+      "doc_sha256": "31b67ba5c65af148bfba98474a62548141741b87f75ebe0d82a89c72e918418c"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_college_computer_science",
+      "dataset_index": 1,
+      "doc_sha256": "0dacc41a55e548aa67994e4fc953a05b36f83066edf00d31d86d8696ba12bc24"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_college_computer_science",
+      "dataset_index": 2,
+      "doc_sha256": "7a3d8aec379670a741878b10e302cdd6b5be942517de629cdbccb91de5a5f2cd"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_college_computer_science",
+      "dataset_index": 3,
+      "doc_sha256": "69a5cbc216d3d3f60731a0e6d0a0c03b6168444dda90fb6ecd2a99854af579bd"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_college_computer_science",
+      "dataset_index": 4,
+      "doc_sha256": "19a4425ac5be4edd23bb79881e7f7575c044adcb4e2dbe794f1102ad8ac51d8f"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_high_school_world_history",
+      "dataset_index": 0,
+      "doc_sha256": "cbb6db3161f5aba5342325a3aa03c06befa0e2c7b41ee877dfa3331a30e04466"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_high_school_world_history",
+      "dataset_index": 1,
+      "doc_sha256": "f4441cf50e0171f2345ef7cb593e350e38c6018935a7d3f12e343386ab355c39"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_high_school_world_history",
+      "dataset_index": 2,
+      "doc_sha256": "b7b041300910b041b57d0abd17fd1018f2fd6f2380028a322aaaae2b24e1f8bb"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_high_school_world_history",
+      "dataset_index": 3,
+      "doc_sha256": "fb6adf4b687c3c825287b8461fc36d15ddb8c437286e0191878f6498ce737a31"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_high_school_world_history",
+      "dataset_index": 4,
+      "doc_sha256": "f068f4e831176a74737a648b70278ea988a2eb26cb46a7ccac93db46dd564a60"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_logical_fallacies",
+      "dataset_index": 0,
+      "doc_sha256": "1a2be799d2e011bbe1addabd1c2344d00b5347576408228afec0c01569a47493"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_logical_fallacies",
+      "dataset_index": 1,
+      "doc_sha256": "4fdf7d515d97abe34276a9ed682f7427afc0a7691c9b36f4920a7b3b653be5e5"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_logical_fallacies",
+      "dataset_index": 2,
+      "doc_sha256": "b74d9604904766820ab2d4d5ca0fbeeaf1855a9f2fb814a000190c94227b7c13"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_logical_fallacies",
+      "dataset_index": 3,
+      "doc_sha256": "5017fd681fa1f22838701911f0f86f6d95c7fcbf65097e541bb3b539d224bfc0"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_logical_fallacies",
+      "dataset_index": 4,
+      "doc_sha256": "73417601ee96ee7e7f75971601f4b6119834ef39d44739716e447a7da597cbba"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_machine_learning",
+      "dataset_index": 0,
+      "doc_sha256": "6f92269f7ff063fa141d7c15574dd0a48cd0c4cda172f9b8203a73de2bd92970"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_machine_learning",
+      "dataset_index": 1,
+      "doc_sha256": "48e99a44e856c8041cb63c32350ea9bbbadc09127dca55c64cf5a933a63e3d8b"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_machine_learning",
+      "dataset_index": 2,
+      "doc_sha256": "5e62575b52fc98cb8219b0adf97853f5e96331751d0d425da8c867a76cbf72c7"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_machine_learning",
+      "dataset_index": 3,
+      "doc_sha256": "b6de0be3d0970e18c483efa817e833a952f06d090caf3adfbdd073f60e1fa279"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_machine_learning",
+      "dataset_index": 4,
+      "doc_sha256": "b5444cc8a0d08c3d710357f83b1149b9dc4415395e6ccf54ea355f2ebd9597f1"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_management",
+      "dataset_index": 0,
+      "doc_sha256": "7560b991ff5bf156f4711fcc367f927bf5b115a6c82b1a075c905dfca8425e65"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_management",
+      "dataset_index": 1,
+      "doc_sha256": "4ff535edb50be9f72fe973ae0321a412fa13e8d441683490fc2604e683b5b734"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_management",
+      "dataset_index": 2,
+      "doc_sha256": "592c89cde21e9eceab7558935fd674bd4d845e72607180ff9b662a4c630f36d1"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_management",
+      "dataset_index": 3,
+      "doc_sha256": "8794f68604fc085e006289d182fb0d431932db4a7b17c90ee1ea77e1583ff3de"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_management",
+      "dataset_index": 4,
+      "doc_sha256": "7dec55127fe2cc8ffd16825f41d04061ec229640e655d762bebba1d9b0595244"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_moral_scenarios",
+      "dataset_index": 0,
+      "doc_sha256": "3a5465798df11139115bb3822e674ccc404118aaacb973a530d7eaf80750fa24"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_moral_scenarios",
+      "dataset_index": 1,
+      "doc_sha256": "134f7fe42a7bffe3672e187dcae4044e112ea429b1d1a9b0504fcc0a033c60be"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_moral_scenarios",
+      "dataset_index": 2,
+      "doc_sha256": "bd0f30feaeccc72e4a7293ed5a32a0a4d6ead99097b74c89dcfdba13bc2b1c76"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_moral_scenarios",
+      "dataset_index": 3,
+      "doc_sha256": "fa8c924e00130646903c6487d18d55df8a11d4569376e5cd839135319b43e618"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_moral_scenarios",
+      "dataset_index": 4,
+      "doc_sha256": "5ddd78ffd7d4c9416f5dedefcea8711ea78a0fed27403cf573ccb6abf0ba1f6a"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_professional_law",
+      "dataset_index": 0,
+      "doc_sha256": "ef6453a581e2da09702796313afd76b1c41bf0215e4b71f710def8c7c25bcc3f"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_professional_law",
+      "dataset_index": 1,
+      "doc_sha256": "fb76973d44abb9d96ed41b05cc8592ec30876c875b048d023f15e729e2529057"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_professional_law",
+      "dataset_index": 2,
+      "doc_sha256": "a6845f6990d9adfad8e30b1c7873e843ccd903ac8159cd19f59fbf2a66a7c82f"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_professional_law",
+      "dataset_index": 3,
+      "doc_sha256": "7a80a120e56ff45fe0537204b93f56aac80270b9acb8c130cf7ff686d12c130c"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_professional_law",
+      "dataset_index": 4,
+      "doc_sha256": "c8580dca4924fb06c2dec01a07dc456594178e07210ee28f638d28f10a0c081b"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_us_foreign_policy",
+      "dataset_index": 0,
+      "doc_sha256": "11f73831a6a2dead876ac4244ae0bcbca0cdb94598b25ec744a0f63c4a2ed4ad"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_us_foreign_policy",
+      "dataset_index": 1,
+      "doc_sha256": "d423af30f2bf503113f84eef09c01f0e1b465ddc2c542e19809b8b96055318f9"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_us_foreign_policy",
+      "dataset_index": 2,
+      "doc_sha256": "49f948573ec1af51781586c277fa55af3b2b5fcc9ada7ea917f768efb5f6e140"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_us_foreign_policy",
+      "dataset_index": 3,
+      "doc_sha256": "df4356a58c06667b59487381b276dbbe7729b880eb07cf91c867b462072406d1"
+    },
+    {
+      "domain": "mmlu",
+      "task_name": "mmlu_us_foreign_policy",
+      "dataset_index": 4,
+      "doc_sha256": "56fa2c40341e81891e108f7b7f55824f8e8b1887b89ea863b501c94afd7513cc"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_advanced_mathematics",
+      "dataset_index": 0,
+      "doc_sha256": "83772738fd910cb218d0b8ad07713aa74e8b26d0a1c14a9338433e4cdacbdd89"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_advanced_mathematics",
+      "dataset_index": 1,
+      "doc_sha256": "9432b63b730b705334297279133347747cbd59a11efc539aede8d5a2a651f226"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_advanced_mathematics",
+      "dataset_index": 2,
+      "doc_sha256": "f27e510abdd917a78faa11e1a466f4603688c6bd66f77b60fec44d5d98a99e9f"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_advanced_mathematics",
+      "dataset_index": 3,
+      "doc_sha256": "3bf32943179bb51585e9cd16b3b61952c68ce21646aea480fe4addb3011f5f54"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_advanced_mathematics",
+      "dataset_index": 4,
+      "doc_sha256": "bad8c7a5cf39d4ee4f47c6a48c48fb0dce755ee08d0acaab218baa0bb923875e"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_business_administration",
+      "dataset_index": 0,
+      "doc_sha256": "285526642fc3767d70aa7e268616233e1b119e4abe0f029c00d2513f730f1f25"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_business_administration",
+      "dataset_index": 1,
+      "doc_sha256": "f778ae834a405563cac1b09461dbbd69b712f057c6d00e88de664261109238ab"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_business_administration",
+      "dataset_index": 2,
+      "doc_sha256": "787e29c62cc83e200d3bf9aaa4e87702eba87dae834d650f7b62b6078b74c690"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_business_administration",
+      "dataset_index": 3,
+      "doc_sha256": "5ccf0dbaad8149bb0cb26af00f3dc2b77b4c0f402f3d0aa88f98655eb7c583f6"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_business_administration",
+      "dataset_index": 4,
+      "doc_sha256": "19bde20aa38c184156ad5b21c0dd9abeb7dfe343970ca87cf17ee4475a39b720"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_clinical_medicine",
+      "dataset_index": 0,
+      "doc_sha256": "8fd2d7f081422151d641e9c458b7fcc0b26466ee047295764c5c8641b92b5601"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_clinical_medicine",
+      "dataset_index": 1,
+      "doc_sha256": "d6ad042aa3b7e25c744759c0a47779fe0f47a7e9d6f04df029aac21e44a92ce7"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_clinical_medicine",
+      "dataset_index": 2,
+      "doc_sha256": "1172c77db87c6e039ff8c9035b8509db3e249d3060b31fbf694a81711943bc1f"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_clinical_medicine",
+      "dataset_index": 3,
+      "doc_sha256": "227ddb35d7f46bd6c362739a080a5324fbb8ef9006d9dc75327838effa5cb1c2"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_clinical_medicine",
+      "dataset_index": 4,
+      "doc_sha256": "7d45af451542a3621f29f6886a8d3180a4c7a0c99a3831da506732cb4f49fe8a"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_college_programming",
+      "dataset_index": 0,
+      "doc_sha256": "b1ae7f44737cee2854707790e233314d8b0ac97777bb9dacf1740f0c24935df3"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_college_programming",
+      "dataset_index": 1,
+      "doc_sha256": "b63bd53fad835bea9e39d5168b11b55565064a609cf561aadcebd9bf297fa45f"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_college_programming",
+      "dataset_index": 2,
+      "doc_sha256": "2297df9338bac831f8f8bc4599bbcc8ac84d01c5330c1dd9dae5582664a6a1ac"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_college_programming",
+      "dataset_index": 3,
+      "doc_sha256": "07a01050b7c7188bbab70a77bddf6af738b476e2abde95a9dac250dd0ec2ed77"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_college_programming",
+      "dataset_index": 4,
+      "doc_sha256": "f022ff7720a39a74ce548a3459efa68c9fc48f24afa32e493bf05bad7daf7dc6"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_computer_network",
+      "dataset_index": 0,
+      "doc_sha256": "b6b368611452d832fe1504a116a20a9bb305e120e867f7cae2780479bff43045"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_computer_network",
+      "dataset_index": 1,
+      "doc_sha256": "bc0875b5834b4376b3e429368b409e03d5a864ce76f19446e9cb93e0d773fe2a"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_computer_network",
+      "dataset_index": 2,
+      "doc_sha256": "1b5b2d091b38b30f1c3dad525739de702f9fd883cd85b8f5f17f206d83e2f014"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_computer_network",
+      "dataset_index": 3,
+      "doc_sha256": "c2adc0c410d0c405c954fb38a31bfb3c6777e88bea5db47ac1c4e7ee2f922f6f"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_computer_network",
+      "dataset_index": 4,
+      "doc_sha256": "59c2b153f75eeaa3e10a16ffdc97ec58ff2fc15d20af55ce7ab25e78a9b57b59"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_chinese",
+      "dataset_index": 0,
+      "doc_sha256": "98cc21cb24ce178bb0d6bf6a32a35d77aac0caee2026a42d6e6cb6b1c3a591f8"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_chinese",
+      "dataset_index": 1,
+      "doc_sha256": "2ed9d1c9fcb7f19f8772dd704171c36c38d743f4bcc4a49765196842fa7054b6"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_chinese",
+      "dataset_index": 2,
+      "doc_sha256": "c3633dbcc4d1486b4f95b0586d2d61491289c1d8c6c67fb5e3854dbcdb5bf92a"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_chinese",
+      "dataset_index": 3,
+      "doc_sha256": "12aef5e43bedc2bc76a939008164a1d0b9acdab98bcd94bf6ff92eb9f072c3a7"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_chinese",
+      "dataset_index": 4,
+      "doc_sha256": "50250ad3ed42416320ce3100de862d9f2d865829ffd78b91cbf0864a788a2ef8"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_history",
+      "dataset_index": 0,
+      "doc_sha256": "32ea339080a1e3b3aa92e00f5ba877e803da06d957f9c76249f5c04004fbf011"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_history",
+      "dataset_index": 1,
+      "doc_sha256": "663758da5dcb289e92cb29710f7165651b18424782825a62f9dad928cbc4bde8"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_history",
+      "dataset_index": 2,
+      "doc_sha256": "6eccf1399468560a2e6b45f5653cef7ce49763509058eb7cb7210eeb3b3c779b"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_history",
+      "dataset_index": 3,
+      "doc_sha256": "c905b5875680ce7dcf1b941b7f7c32b392ea5a6f4bc61f0f031d671fbef2e09b"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_high_school_history",
+      "dataset_index": 4,
+      "doc_sha256": "9a23744f10eb529b5481f14b1eb0b4da00d9e94ecc99a3995c28d7b7d531fdf5"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_law",
+      "dataset_index": 0,
+      "doc_sha256": "944c11b8108127563ba8d0830b9bc082bfa07f3facffec7d99170ad34dda3e0c"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_law",
+      "dataset_index": 1,
+      "doc_sha256": "e195b162d4cef95d5d8ab5b58b4f99314186415d1edaeab2f9861b5237ccfcd5"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_law",
+      "dataset_index": 2,
+      "doc_sha256": "d596e02f59c21fe8712ec3cb941ce598a858e6582f1ec5ca3b0dfa9fd524b0d2"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_law",
+      "dataset_index": 3,
+      "doc_sha256": "96c1c8c39ca1e2ef5c6290b04a0014c251c7f4723d02dc2a672bb01ac348e0cf"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_law",
+      "dataset_index": 4,
+      "doc_sha256": "9533dda81b5301c2752821cc7e1b23b1706b3c3faae0a2673f30a730c129061d"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_logic",
+      "dataset_index": 0,
+      "doc_sha256": "3431a1dcb40dcaad5e899d4fb8b52061368100e6f9f28e7eb5284c7bba67d138"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_logic",
+      "dataset_index": 1,
+      "doc_sha256": "c9c30b600aaf1661c4a9d3e645406736f6e85602ba73f0b3263adcfde0d762d0"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_logic",
+      "dataset_index": 2,
+      "doc_sha256": "bfe771484bc05d9917194a5afa1488f3b935069c569974a505560fe48e96da6e"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_logic",
+      "dataset_index": 3,
+      "doc_sha256": "b319e593d81609359ecf76960cb8e1c605067ec4d0798b5c4b6e3fe7844eb5cc"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_logic",
+      "dataset_index": 4,
+      "doc_sha256": "5c888f495670815f9fb9caec4c0a0775b49c103ae912ea518df20ab121ab5f06"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_modern_chinese_history",
+      "dataset_index": 0,
+      "doc_sha256": "49491530a519afb9fda43dd42d315b967cd6a73739eff7db841744b97b9d15fc"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_modern_chinese_history",
+      "dataset_index": 1,
+      "doc_sha256": "aba7ed1266efce74b39e8f3b53d433c708ceb2e59618b384377ff410d509737a"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_modern_chinese_history",
+      "dataset_index": 2,
+      "doc_sha256": "f1ddd7b1e84cacaeeac4e9bb988eb14a91ff78eea2dc74269735891e668c80fd"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_modern_chinese_history",
+      "dataset_index": 3,
+      "doc_sha256": "c62c349ea1bfccbb4cea0ca64a3f881d830203b93ba2804f466588b5f6f5da53"
+    },
+    {
+      "domain": "ceval",
+      "task_name": "ceval-valid_modern_chinese_history",
+      "dataset_index": 4,
+      "doc_sha256": "f5de63656ab55fab9e78f2d512bf5c5b5072179d1d9f06129c37c0c02deb0eac"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 0,
+      "doc_sha256": "bf57732e40cd8e8b0fde76194f8821803215a2af3eda99ed2c80013015d81dd4"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 1,
+      "doc_sha256": "420cf9687100c86d0b19c33baa7c943b4f8a102b76aed927488958e1b47e0809"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 2,
+      "doc_sha256": "fd597e32281cd2596630e2c66dc611e7a7b3f8f8c6f07bceca796eabc955395d"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 3,
+      "doc_sha256": "fbbeed43b5207a2982ac125c795ec3b54a434468e80796d896898687859b010a"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 4,
+      "doc_sha256": "68d7b0bca543f5d75e9a2cadfc2052bb9b7815801668d4f16886298c144e0005"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 5,
+      "doc_sha256": "16a1662aedc3724254288fc0f3c1c76f8cf53beb5ab7153164189e68de5ff30b"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 6,
+      "doc_sha256": "d39489b5a170bfe16b8b2f1869f5de2162bc67d3c587f1b42d0e12a013ed9b97"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 7,
+      "doc_sha256": "6515eb994c809dd8bc1cff02933bc5f102e9d79403b99b356fb773fd4c8b0ed4"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 8,
+      "doc_sha256": "da53ee196d51be777c0f7e13bff3e9f8b64182b131ed63fc4d6d5ed44cb26e27"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 9,
+      "doc_sha256": "8d8ec9da0b773e3c210bef3730670c4e5f5ba0bd2ecc4a7fcaf904f97dc41195"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 10,
+      "doc_sha256": "b9dc82fab46e5480ef5d115f047a6b12588015c1e911de489637ef678104096d"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 11,
+      "doc_sha256": "dab2707e2e54dcfc4316236b21b154aebefc6f798e53fdb5fa3687267daa74d0"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 12,
+      "doc_sha256": "c2c00c3566b21ec5327ec57a06de7243fe4f5f9bc23f0405e1437fb263da283a"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 13,
+      "doc_sha256": "d1d5f99cf0eef1d47cb15fae53e7b81f57c8c80be20dc97dd4614f14dfebe25d"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 14,
+      "doc_sha256": "064acb5d93beaa3624068f9f525794d529f63bf984cd920b724967052251044e"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 15,
+      "doc_sha256": "54d975ba4e32a83b4e333c2f972a08869dddd4d311ce45b1292a93c9eace57b9"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 16,
+      "doc_sha256": "49756982bf7124a7b4278d4183b1d22b264426a33f8655fda948eb04bf7936ee"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 17,
+      "doc_sha256": "d8b4f5d9161e049134aa79e2806e6e9d9e7a5b86fa48d94f465dd8cd02912ba6"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 18,
+      "doc_sha256": "6cc4bf2d2e7c3fef3a2b292b9ac035de6fcd481f90931394329384d558cd3751"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 19,
+      "doc_sha256": "896b88d70d0b6db71d01520aef182b0a6270b0b122bd4226435397139db77e84"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 20,
+      "doc_sha256": "b20cac55f9a7dbd75b5d54fb003c292519d1c9673d5708b166bdbfce1ff4d22c"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 21,
+      "doc_sha256": "37ef4e79522cc1c11e5036b619fd4ffd07ba08fdbd121ef43a2f97310f0f3434"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 22,
+      "doc_sha256": "c83c818838077c7e3cb40252f36ee368f6cf6bf9b27b41a78ea65dcc66d3a074"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 23,
+      "doc_sha256": "3bdb0de7892d25a07ad782aaeec2a920c954a81ec47260465f0a07ad82f1f249"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 24,
+      "doc_sha256": "fca54bc1140786e42940ab00f0b7e6092373aa26147cf06ae0c40b03e5611268"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 25,
+      "doc_sha256": "5a202c5f5cccaf573eaf66e3e4c08bebd436664c5282bca3fcced82d60be5c49"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 26,
+      "doc_sha256": "59d58122ab7c8b8a2194d6780d45d9c24ab0a1ff7287245022a4dbe7b5ff45a9"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 27,
+      "doc_sha256": "2589aa3d90cb27863d9430249642df76758a7382aaff6a2a1165b2b019b5130d"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 28,
+      "doc_sha256": "6ed2e36627e785bce6d6aa4bc4025f3ed32e281ce8414c07acc61a1a5d617ad4"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 29,
+      "doc_sha256": "03675eaa2403b0e47d7eea757298f6490cd6ec9fdf9b3ee6b4d38b4eeebb518a"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 30,
+      "doc_sha256": "ed5c635a461954ea69b18c49d2c4a739169dac2b93acc4720905a4698f8cbef8"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 31,
+      "doc_sha256": "ba42d2e68e65b21a65fd8f9512412c013c0edf5f913d15120058f1a978332984"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 32,
+      "doc_sha256": "bd960291c0ad9af802237d53e8a87abe18df6fb7abccd07492ababc9407be697"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 33,
+      "doc_sha256": "189d61f9d9c036dd12f1d1b65c917344aa7bd19c6ba5817be709c9f49c99c304"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 34,
+      "doc_sha256": "7a75b11d530939d95d6de6b73aaff1bfdbba0e34d206be2519a8ccf318d2e425"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 35,
+      "doc_sha256": "0126ce0f6d141d0f62d526f5aed01b9f2057c68e8840de91a9068c40e5d533e8"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 36,
+      "doc_sha256": "ddbd4886b5dff0a4799c10c074e202a591a699c3189f6edd2cbe51c2112d0f02"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 37,
+      "doc_sha256": "d83a1b3cf0225e82e9129048de129ca683242d5fb7665bd73fd26368769854c1"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 38,
+      "doc_sha256": "f8cdc3732a3b17bf9bedc7d3c29152419ae48b3a0edbeb189ee77a5cf18d47b7"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 39,
+      "doc_sha256": "aa55ea666191fcb132907876633f26783840fc9a080d1a3412d08056a089f548"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 40,
+      "doc_sha256": "a2fc9c9df622bf13c2e577bde1f506e326f824e2d66f44effa523e7a6f665cfa"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 41,
+      "doc_sha256": "78ac07e697f2588b80a799ed2c4a0abef7569054fbe3968e3996dde8fdfdf07c"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 42,
+      "doc_sha256": "778314b7f73b90d343df3d7fe82b41233db52f4d2a45512ee381b9e4401a317f"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 43,
+      "doc_sha256": "490b1b3468d298a0672b7228fe52399855025b88faf7af6cd836ced9f87a5f0b"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 44,
+      "doc_sha256": "4093baabf16c9102e79311406396760f9408044e1db5ff8291d3e3998d32f80a"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 45,
+      "doc_sha256": "2566e5b334252bf89a8db4cc54a6c8d9fac07d1e3a3978a7cc0d9abcbb373319"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 46,
+      "doc_sha256": "539d91324536e34e426544710e2171950360d0d19cda3035a6db1758e82933f4"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 47,
+      "doc_sha256": "49098b506d50ae1ca6dae57dea1cc240fe3f780b0e4634cf9089e1c20f5c7fde"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 48,
+      "doc_sha256": "214b85e7254a50f7d35f61d7614b4c3d610f8e0351d5e59e4b510e46449accf4"
+    },
+    {
+      "domain": "ifeval",
+      "task_name": "ifeval",
+      "dataset_index": 49,
+      "doc_sha256": "ae58522795d2cd316881246b61b9b13544f747af2ac8236798f7ae6bfe4bdd6b"
+    }
+  ],
+  "claim_boundary": "Exactly 200 frozen public-benchmark items: 50 per domain. This is a paired release smoke suite, not a full official leaderboard reproduction. Deterministic decoding removes sampling variance but the finite task sample leaves benchmark-selection uncertainty."
+}
